@@ -6,15 +6,13 @@ image: http://unsplash.it/400?random
 ---
 
 ## Overview
-Lorem ipsum dolor sit amet, purto tota in vel, exerci discere apeirian has in. Nec noster iracundia eu, utroque facilis ad has. Alii argumentum no his, omnis iusto scripta vim in, ipsum ridens mel at. Has homero phaedrum no, ea autem affert facilis usu, has possim meliore perpetua id. Errem iisque mea ex, option ocurreret no est. Sea facer ullamcorper ne, cu dictas discere repudiandae sea.
-
-His nemore audiam consequat ad, no augue choro assueverit mei. Zril offendit tincidunt ne quo. At commodo integre alienum sea, cu vocent fuisset suscipit nam. Eum ex tation omnesque adversarium, mutat autem putant te nam. Id vix facilis complectitur, vis vitae vivendo euripidis ea, fugit eirmod an vix.
-
-Ad case nemore equidem mea. Duo te iuvaret appetere appellantur, sint scaevola usu cu. Eum ne aeque ridens prompta. At legendos vulputate eos, pro illum iuvaret cu, ludus vituperata usu no.
-
-Mel magna discere in. Mea ea dicit homero perfecto. Eam nulla facete scribentur in. Vide volutpat laboramus est cu, usu cu impetus dignissim. Ex pro decore impetus. Ius nihil iisque deterruisset an, ex sanctus verterem his. Doming prompta insolens est ut.
+Born and raised in Brazil, Guilherme obtained his B.S. in Computer Science at the Federal University of Uberlandia in 2010. During his undergraduate studies, he was active in student groups focused in developing computer games, mobile applications, and later as a developer for Cedro, a company specialized in solutions for the stock market.  
+  
+After graduation, Guilherme moved to Detroit, Michigan where he worked for Urban Science. As a consultant, he used his programming skills to process countless lines of information that helped justify decisions for major car manufacturers on projects in the Americas. Under the tutelage of Michael Arkison and Ramon Motilla, he started the first of the company's smart data bases containing Brazilian automotive data in inedited levels, propelling Urban Science's business in the 4th greatest automotive market in the world.  
+  
+Guilherme found on his masters in Robotics the opportunity to compliment his software skills with the knowledge to bridge the gap with robotics and automation. He is thrilled by projects and researches that applies robotics to facilitate common daily tasks and sees in robotics the chance to use his coding skills to develop for the physical world.
 
 ### Research interests
-* Interest 1
-* Interest 2
-* Interest 3
+* Robotic Exoskeletons
+* Drones
+* Artificial Intelligence
