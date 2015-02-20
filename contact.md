@@ -2,7 +2,7 @@
 layout: contact
 path: /contact
 url: index.html
-image: http://unsplash.it/400?random
+image: https://github.com/guiklink/portfolio/blob/gh-pages/public/images/nu-tech-building.jpg?raw=true
 ---
 
 

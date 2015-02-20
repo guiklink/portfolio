@@ -2,7 +2,7 @@
 layout: about
 path: /about
 url: index.html
-image: http://unsplash.it/400?random
+image: https://github.com/guiklink/portfolio/blob/gh-pages/public/images/guilherme_klink.jpg?raw=true
 ---
 
 ## Overview
