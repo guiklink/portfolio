@@ -7,6 +7,10 @@ image: https://github.com/guiklink/portfolio/blob/gh-pages/public/images/nu-tech
 
 
 * Email: guilhermeklink2016@u.northwestern.edu
-* Address: 2145 Sheridan Rd., Evanston, IL, 60201
-* Lab: D110 (Tech Institute)
 
+
+Master of Science in Robotics
+Northwestern University
+Tech Institute B224
+2145 Sheridan Rd. 
+Evanston, IL 60208

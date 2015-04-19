@@ -13,6 +13,7 @@ After graduation, Guilherme moved to Detroit, Michigan where he worked for Urban
 Guilherme found on his masters in Robotics the opportunity to compliment his software skills with the knowledge to bridge the gap with robotics and automation. He is thrilled by projects and researches that applies robotics to facilitate common daily tasks and sees in robotics the chance to use his coding skills to develop for the physical world.
 
 ### Research interests
-* Robotic Exoskeletons
+* Human robot collaboration
+* Exoskeletons
 * Drones
 * Artificial Intelligence
