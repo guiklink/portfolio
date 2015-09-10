@@ -5,7 +5,7 @@ date: February 10, 2015
 image: https://github.com/guiklink/portfolio/blob/gh-pages/public/images/2D_quad_opt/logo.png?raw=true
 ---
 
-[Code and Animation]()
+[Mathematica Code]()
 
 [Write Up](https://github.com/guiklink/portfolio/blob/gh-pages/public/Documents/2D_Quad/write_up.pdf)
 
