@@ -1,8 +1,8 @@
 ---
 layout: project
-title: ROS Java
+title: Get started with ROSJava
 date: February 10, 2015
-image: https://github.com/guiklink/portfolio/blob/gh-pages/public/images/pj2_logo_small.JPG?raw=true
+image: https://github.com/guiklink/portfolio/blob/gh-pages/public/images/ROS_Java/ROS_JAVA.png?raw=true
 ---
 
 # Intro
