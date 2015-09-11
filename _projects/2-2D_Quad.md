@@ -20,7 +20,8 @@ In the representation above the X-axis points to the righ, the Y-axis points to 
 ## Code and Animation 
 The [algorithm](/home/klink/MS_Robotics/ME454_Optimal_Control/Final Project/GK_Quad_Animated-1.nb) will provide an animation of a bar like 2D Quad rotor as well as the plots for {x, z, ϴ}.
 
-![Animation]()   
+<iframe src="https://player.vimeo.com/video/138922599" width="500" height="529" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe> <p><a href="https://vimeo.com/138922599">2DQuad_Loop</a> from <a href="https://vimeo.com/user43396191">Guilherme Klink</a> on <a href="https://vimeo.com">Vimeo</a>.</p>
+
 ![X_Plot](https://github.com/guiklink/portfolio/blob/gh-pages/public/images/2D_quad_opt/x_plot.png?raw=true)   
 ![Z_Plot](https://github.com/guiklink/portfolio/blob/gh-pages/public/images/2D_quad_opt/z_plot.png?raw=true)   
 ![ϴ_Plot](https://github.com/guiklink/portfolio/blob/gh-pages/public/images/2D_quad_opt/delta_plot.png?raw=true)   
@@ -54,7 +55,10 @@ A basic quadratic cost equation was used since this types of functions generate 
 
 ![Parabola](https://github.com/guiklink/portfolio/blob/gh-pages/public/images/2D_quad_opt/quadratic_func.png?raw=true)
 
-Therefore is guaranteed that the algorithm will always be able to find the lowest cost without getting stuck in a local minimum. The specific quadratic function used as the way its constants were tuned can be found in [item 3](https://github.com/guiklink/portfolio/blob/gh-pages/public/Documents/2D_Quad/write_up.pdf). 
+Therefore is guaranteed that the algorithm will always be able to find the lowest cost without getting stuck in a local minimum. The specific quadratic function used as the way its constants were tuned can be found in [Section 3](https://github.com/guiklink/portfolio/blob/gh-pages/public/Documents/2D_Quad/write_up.pdf). 
 
 ## Armijo Line Search
 The [Armijo line search](https://en.wikipedia.org/wiki/Backtracking_line_search) innequation is used to guarantee that on each step the gradient descent will descent and eventually achieve an optimal solution.
+
+# Conclusion
+Unfortunattelly, the Mathematica running performance makes this alghorithm unfeasable for a real life quadrotor aplication (it would run for hours and problem overflow the computer's memory), however it was important for my understanding of how implement a Gradient Descent Optimization for a complex problem and to polish my skills with quarotor dynamics. I hope in the future to implement the same solution using a faster programming language.  
