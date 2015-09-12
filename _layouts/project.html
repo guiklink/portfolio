@@ -1,10 +1,12 @@
 ---
 layout: main
 ---
+
 <main class="project">
 	<section id="contact-content">
 		<img id="project-image" src="{{ page.image }}">
 		<h1 id="project-title">{{ page.title }}</h1>
+		<h2 id="project-repository"><a id="repository-link" href="{{ page.repository }}">Repository</a></h2>
 		<h2 id="project-date">{{ page.date }}</h2>
 
 		{{ content }}
@@ -33,7 +35,7 @@ $(document).ready(function(){
     $("h1,h2,h3,h4").each(function() {
 
     el = $(this);
-    if (el.attr("id") != "index-ignore" && el.attr("id") != "portfolio-header" &&el.attr("id") != "project-title" && el.attr("id") != "project-date") {
+    if (el.attr("id") != "index-ignore" && el.attr("id") != "portfolio-header" &&el.attr("id") != "project-title" && el.attr("id") != "project-repository" && el.attr("id") != "project-date") {
       title = el.text();
       link = "#" + el.attr("id");
 
@@ -50,6 +52,14 @@ $(document).ready(function(){
     ToC += "</ul>" + "</nav>";
     $("article").prepend(ToC);
 });
+
+$(document).ready(function(){
+	var rep = $("#repository-link").attr('href');
+	if (rep == "") {
+		$("#project-repository").text("");
+	};
+});
+
 </script>
 </head>
 

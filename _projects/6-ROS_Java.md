@@ -1,13 +1,12 @@
 ---
 layout: project
 title: Get started with ROSJava
+repository: https://github.com/guiklink/ME495_Rosjava_Startup
 date: February 10, 2015
 image: https://github.com/guiklink/portfolio/blob/gh-pages/public/images/ROS_Java/ROS_JAVA.png?raw=true
 ---
 
 <article></article>
-
-#[Repository](https://github.com/guiklink/ME495_Rosjava_Startup) {#repository}
 
 #Introduction 
 This is a tutorial of how to get started with ROS Java by getting the [turtlesim](http://wiki.ros.org/turtlesim) walking in a square using [Java](https://en.wikipedia.org/wiki/Java_(programming_language)).   
