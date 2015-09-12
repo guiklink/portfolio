@@ -5,166 +5,85 @@ date: February 10, 2015
 image: https://github.com/guiklink/portfolio/blob/gh-pages/public/images/ROS_Java/ROS_JAVA.png?raw=true
 ---
 
+
+
+<article></article>
+
 [Repository](https://github.com/guiklink/ME495_Rosjava_Startup)
 
-# Introduction
+<h2>Introduction</h2>
+This is a tutorial of how to get started with ROS Java by getting the [turtlesim](http://wiki.ros.org/turtlesim) walking in a square using [Java](https://en.wikipedia.org/wiki/Java_(programming_language)).
 
-The goal of our project is to install rosjava and modify the simple publisher to control the [turtlesim](http://wiki.ros.org/turtlesim) package. The extensions are a demo of Android application publishing "Hello World" message from Moto G and subscribing on our computer, and reading accelerometer readings from the phone and sending the phone’s orientation to the computer.
+<br>
+<h2> Installing rosjava</h2>
+First install the source by following the steps [here](http://wiki.ros.org/rosjava/Tutorials/indigo/Source%20Installation). After installation if your not able to *catkin make* your workspace make sure you update all the packages (run a *'sudo apt-get update'* on a terminal). All the basic documentation about ROS Java, like how to create packages, messages and building libraries are documented [here](http://wiki.ros.org/rosjava) (you might have to change it for Indigo).   
 
-## Installing rosjava
+<br>  
+<h2> Writing a Simple Publisher and Subscriber (Java)</h2>
 
-Install rosjava following the [source install instructions](http://wiki.ros.org/rosjava/Tutorials/indigo/Installation). One of the problems we came across was catkin_make failing during the installlation. Updating all the packages seems to have solve the problem. There is no explanation why this is happening. On cautionary side, run a 'sudo apt-get update' before rosjava installation. It's seem that [Damon Kohler](http://www.damonkohler.com/) is the main person responsible for the repositories.
+A typical rosjava workspace looks slightly different than a ROS workspace, since it is not as tightly integrated with ROS as rospy or roscpp. Instead, rosjava uses [Gradle](http://www.gradle.org/) and [Maven](http://maven.apache.org/). The last is a build automation tool used primarily for Java projects. Maven addresses two aspects of building software: First, it describes how software is built, and second, it describes its dependencies. It also forces a lot of best practices and standards. Most of the java community uses Maven repository structure and standards as well as the dependency management. Gradle has a Maven plugin that adds support for deploying to Maven repositories. 
 
-## Writing a Simple Publisher and Subscriber (Java)
-
-A typical rosjava workspace looks slightly different than a ROS workspace. rosjava is not as tightly integrated with ROS as rospy or roscpp. rosjava uses Gradle for build.
-
-#### Gradle and Maven
-
-[Gradle](http://www.gradle.org/) is a project automation tool. Gradle can automate the building, testing, publishing, deployment and more of software packages or other types of projects such as generated static websites, generated documentation. The Gradle Wrapper is another word you might come across. It is the preferred way of starting a Gradle build. The wrapper is a batch script on Windows, and a shell script for other operating systems. When you start a Gradle build via the wrapper, Gradle will be automatically downloaded and used to run the build. Gradle's build scripts are written in Groovy, not XML. [Groovy](http://groovy.codehaus.org/) is a dynamic language for the Java Virtual Machine and is inspired by languages like Python and Ruby. 
-
-When you call catkin_make in rosjava, compilation task is relayed over to gradle from cMake. As far as we are concerned, we might have to add dependencies in build.gradle file. A typical build.gradle file for a project looks like:
-
-```javascript
-/*
- * Copyright (C) 2014 Remi Padiath.
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not
- * use this file except in compliance with the License. You may obtain a copy of
- * the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
- * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
- * License for the specific language governing permissions and limitations under
- * the License.
- */
-
-/* This plugin is necessary for creating installApp tasks (i.e. executables) */
-apply plugin: 'application'
-mainClassName = 'org.ros.RosRun'
-
-/* 
- Dependencies can be on external maven artifacts (such as rosjava_core
- here) or on sibling subprojects. Fpr external maven artifact dependencies
- it's convenient to use an open ranged dependency, but restrict it to
- cover the patch version only to avoid breakages due to api changes
- which usually occur on minor and major version numbers.
-*/
-
-dependencies {
-  /* An external maven artifact dependency */
-  compile 'org.ros.rosjava_core:rosjava:[0.1,)'
-  compile 'org.ros.rosjava_messages:geometry_msgs:1.10.+'
-  /* Example of a local subproject dependency */ 
-  /* compile project(':sibling_gradle_project') */
-}
-```
-
-[Maven](http://maven.apache.org/) is a build automation tool used primarily for Java projects. Maven addresses two aspects of building software: First, it describes how software is built, and second, it describes its dependencies. It also forces a lot of best practices and standards. Most of the java community uses Maven repository structure and standards as well as the dependency management. Gradle has a Maven plugin that adds support for deploying to Maven repositories. 
-
-
-#### Creating Rosjava Packages
+<br>
+<h2> Creating Rosjava Packages</h2>
 
 First, create a wokspace for your project. Then, create a [rosjava package](http://wiki.ros.org/rosjava_build_tools/Tutorials/hydro/Creating%20Rosjava%20Packages). Follow the directions upto step 5.1.Binary Projects (App) and then continue to the next step [Writing a Simple Publisher and Subscriber (Java)](http://wiki.ros.org/rosjava_build_tools/Tutorials/hydro/WritingPublisherSubscriber%28Java%29). [Note: Do not execute Step 5.2.Library Project. It seems to break catkin_make and compilation error follows anything you do in rosjava after that].
 
-##### Repository Structure
+### Repository Structure
 
 When you run catkin_create_rosjava_pkg, rosjava create the repository slightly different to usual ros repository structures.
 
 
-**Ros** | **Rosjava**
------------- | -------------
-Catkin Stack | Catkin Package/Gradle Multi-project
-Catkin Package | Gradle Subproject
+<style type="text/css">
+.tg  {border-collapse:collapse;border-spacing:0;}
+.tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
+.tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
+.tg .tg-cxkv{background-color:#ffffff}
+.tg .tg-8xqh{font-weight:bold;background-color:#c0c0c0}
+</style>
+<table class="tg" style="undefined;table-layout: fixed; width: 449px">
+<colgroup>
+<col style="width: 213px">
+<col style="width: 236px">
+</colgroup>
+  <tr>
+    <th class="tg-8xqh">                     ROS</th>
+    <th class="tg-8xqh">                     ROS Java</th>
+  </tr>
+  <tr>
+    <td class="tg-cxkv">               Catkin Stack</td>
+    <td class="tg-cxkv">Catkin Package/Gradle Multi-project</td>
+  </tr>
+  <tr>
+    <td class="tg-cxkv">            Catkin Package</td>
+    <td class="tg-cxkv">              Gradle Subproject</td>
+  </tr>
+</table>
+<br>
 
-The typical structure of a rosjava repository looks like this:
+<h2>Compiling with Gradle</h2>
 
-```javascript
-+ rosjava_foo
- - package.xml
- - CMakeLists.txt
- - build.gradle
- - settings.gradle
- - gradlew
- + projectA
-   - build.gradle
-   + src/main/java
-   + src/main/tests 
- + projectB
-   - build.gradle
-   + src/main/java
-   + src/main/tests 
-   ```
-As you can see, there is build.gradle file for each projects or subprojects. And it is possible to just compile the packages using gradle instead of using catkin_make after you have run catkin_make at least once. 
+When you run catkin_make, cMake runs through your entire workspace and when it gets to your new project, it will pass off the build to gradle.You could alternatively just compile your subproject alone with gradle (much faster than running catkin_make across your entire workspace):
 
-A typical package.xml looks as follows. 
+<div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%">source devel<span style="color: #333333">/</span>setup<span style="color: #333333">.</span>bash
+cd src<span style="color: #333333">/</span>rosjava_catkin_package_a<span style="color: #333333">/</span>my_pub_sub_tutorial
+<span style="color: #333333">../</span>gradlew installApp
+</pre></div>
 
-```javascript
-<?xml version="1.0"?>
-<package>
-  <name>rosjava_catkin_package_a</name>
-  <version>0.1.0</version>
-  <description>The rosjava_catkin_package_a package</description>
+<br>
+<h1>Sending Messages for the Turtle</h1>
 
-  <!-- One maintainer tag required, multiple allowed, one person per tag --> 
-  <!-- Example:  -->
-  <!-- <maintainer email="jane.doe@example.com">Jane Doe</maintainer> -->
-  <maintainer email="remi@todo.todo">remi</maintainer>
+Now let's walk though on how to change the **Writing a Simple Publisher and Subscriber** subproject in order to publish messages for the [turtlesim](http://wiki.ros.org/turtlesim). Also, you can `git clone` the final package from [here](https://github.com/guiklink/ME495_Rosjava_Startup).
 
+*NOTE:* Create a [Simple Publisher and Subscriber](http://wiki.ros.org/rosjava_build_tools/Tutorials/hydro/WritingPublisherSubscriber%28Java%29) subproject if you still have not yet.    
 
-  <!-- One license tag required, multiple allowed, one license per tag -->
-  <!-- Commonly used license strings: -->
-  <!--   BSD, MIT, Boost Software License, GPLv2, GPLv3, LGPLv2.1, LGPLv3 -->
-  <license>Apache 2.0</license>
+<br>
+<h2>Adding Dependencies</h2>
+First, we need to add the dependencies we are going to be using for this task. Remember that the [turtlesim](http://wiki.ros.org/turtlesim) subscribes to 'geometry_msgs.Twist' ROS message, therefore we must make sure that the compiler is aware of this to build our executables.
+ 
+Go inside your **rosjava** package (**rosjava_catkin_package_a** if you strickly followed the tutorial above) and open the [CmakeList.txt](https://github.com/guiklink/ME495_Rosjava_Startup/blob/master/CMakeLists.txt) and [package.xml](https://github.com/guiklink/ME495_Rosjava_Startup/blob/master/package.xml).
 
-
-  <!-- Url tags are optional, but mutiple are allowed, one per tag -->
-  <!-- Optional attribute type can be: website, bugtracker, or repository -->
-  <!-- Example: -->
-  <!-- <url type="website">http://wiki.ros.org/rosjava_catkin_package_a</url> -->
-
-
-  <!-- Author tags are optional, mutiple are allowed, one per tag -->
-  <!-- Authors do not have to be maintianers, but could be -->
-  <!-- Example: -->
-  <!-- <author email="jane.doe@example.com">Jane Doe</author> -->
-
-
-  <!-- The *_depend tags are used to specify dependencies -->
-  <!-- Dependencies can be catkin packages or system dependencies -->
-  <!-- Examples: -->
-  <!-- Use build_depend for packages you need at compile time: -->
-  <!--   <build_depend>message_generation</build_depend> -->
-  <!-- Use buildtool_depend for build tool packages: -->
-  <!--   <buildtool_depend>catkin</buildtool_depend> -->
-  <!-- Use run_depend for packages you need at runtime: -->
-  <!--   <run_depend>message_runtime</run_depend> -->
-  <!-- Use test_depend for packages you need only for testing: -->
-  <!--   <test_depend>gtest</test_depend> -->
-  <buildtool_depend>catkin</buildtool_depend>
-  <build_depend>rosjava_build_tools</build_depend>
-  <build_depend>geometry_msgs</build_depend>
-  <run_depend>geometry_msgs</run_depend> 
-  <build_depend>rosjava_messages</build_depend>
-  <run_depend>rosjava_messages</run_depend>
-
- <!-- The export tag contains other, unspecified, tags -->
-  <export>
-    <!-- You can specify that this package is a metapackage here: -->
-    <!-- <metapackage/> -->
-
-    <!-- Other tools can request additional information be placed here -->
-
-  </export>
-</package>
-```
-And a typical CMakeLists.txt is shown here:
-
-```javascript
-##############################################################################
+<h3><em>CmakeList.txt</em></h3>
+<div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%">##############################################################################
 # CMake
 ##############################################################################
 
@@ -178,7 +97,7 @@ project(rosjava_catkin_package_a)
 find_package(catkin REQUIRED rosjava_build_tools)
 find_package(catkin REQUIRED COMPONENTS geometry_msgs)
 
-# Set the gradle targets you want catkin's make to run by default, e.g.
+# Set the gradle targets you want catkin&#39;s make to run by default, e.g.
 #   catkin_rosjava_setup(installApp)
 # Note that the catkin_create_rosjava_xxx scripts will usually automatically
 # add tasks to this for you when you create subprojects.
@@ -194,16 +113,148 @@ catkin_package()
 # allprojects closure the root build.gradle
 install(DIRECTORY ${CATKIN_DEVEL_PREFIX}/${CATKIN_GLOBAL_MAVEN_DESTINATION}/com/github/rosjava/${PROJECT_NAME}/ 
         DESTINATION ${CATKIN_GLOBAL_MAVEN_DESTINATION}/com/github/rosjava/${PROJECT_NAME})
-```
+</pre></div>
 
-##### Compiling with Gradle
 
-When you run catkin_make, cMake runs through your entire workspace and when it gets to your new project, it will pass off the build to gradle.You could alternatively just compile your subproject alone with gradle (much faster than running catkin_make across your entire workspace):
+* The code line  ```find_package(catkin REQUIRED COMPONENTS geometry_msgs)``` must be added to include [geometry_msgs](http://wiki.ros.org/geometry_msgs).
 
-```javascrpit
-source devel/setup.bash
-cd src/rosjava_catkin_package_a/my_pub_sub_tutorial
-../gradlew installApp
-```
+<br>
+<h3><em>package.xml</em></h3>
+<!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #557799">&lt;?xml version=&quot;1.0&quot;?&gt;</span>
+<span style="color: #007700">&lt;package&gt;</span>
+  <span style="color: #007700">&lt;name&gt;</span>rosjava_catkin_package_a<span style="color: #007700">&lt;/name&gt;</span>
+  <span style="color: #007700">&lt;version&gt;</span>0.1.0<span style="color: #007700">&lt;/version&gt;</span>
+  <span style="color: #007700">&lt;description&gt;</span>The rosjava_catkin_package_a package<span style="color: #007700">&lt;/description&gt;</span>
 
-Next, [move the turtle](https://github.com/guiklink/ME495_Rosjava_Startup/blob/master/howToUseJavaControlTurtle.md) or [create an Android workspace](https://github.com/guiklink/ME495_Rosjava_Startup/blob/master/creatingAndroidEnv.md).
+  <span style="color: #888888">&lt;!-- One maintainer tag required, multiple allowed, one person per tag --&gt;</span> 
+  <span style="color: #888888">&lt;!-- Example:  --&gt;</span>
+  <span style="color: #888888">&lt;!-- &lt;maintainer email=&quot;jane.doe@example.com&quot;&gt;Jane Doe&lt;/maintainer&gt; --&gt;</span>
+  <span style="color: #007700">&lt;maintainer</span> <span style="color: #0000CC">email=</span><span style="background-color: #fff0f0">&quot;klink@todo.todo&quot;</span><span style="color: #007700">&gt;</span>klink<span style="color: #007700">&lt;/maintainer&gt;</span>
+
+
+  <span style="color: #888888">&lt;!-- One license tag required, multiple allowed, one license per tag --&gt;</span>
+  <span style="color: #888888">&lt;!-- Commonly used license strings: --&gt;</span>
+  <span style="color: #888888">&lt;!--   BSD, MIT, Boost Software License, GPLv2, GPLv3, LGPLv2.1, LGPLv3 --&gt;</span>
+  <span style="color: #007700">&lt;license&gt;</span>Apache 2.0<span style="color: #007700">&lt;/license&gt;</span>
+
+
+  <span style="color: #888888">&lt;!-- Url tags are optional, but mutiple are allowed, one per tag --&gt;</span>
+  <span style="color: #888888">&lt;!-- Optional attribute type can be: website, bugtracker, or repository --&gt;</span>
+  <span style="color: #888888">&lt;!-- Example: --&gt;</span>
+  <span style="color: #888888">&lt;!-- &lt;url type=&quot;website&quot;&gt;http://wiki.ros.org/rosjava_catkin_package_a&lt;/url&gt; --&gt;</span>
+
+
+  <span style="color: #888888">&lt;!-- Author tags are optional, mutiple are allowed, one per tag --&gt;</span>
+  <span style="color: #888888">&lt;!-- Authors do not have to be maintianers, but could be --&gt;</span>
+  <span style="color: #888888">&lt;!-- Example: --&gt;</span>
+  <span style="color: #888888">&lt;!-- &lt;author email=&quot;jane.doe@example.com&quot;&gt;Jane Doe&lt;/author&gt; --&gt;</span>
+
+
+  <span style="color: #888888">&lt;!-- The *_depend tags are used to specify dependencies --&gt;</span>
+  <span style="color: #888888">&lt;!-- Dependencies can be catkin packages or system dependencies --&gt;</span>
+  <span style="color: #888888">&lt;!-- Examples: --&gt;</span>
+  <span style="color: #888888">&lt;!-- Use build_depend for packages you need at compile time: --&gt;</span>
+  <span style="color: #888888">&lt;!--   &lt;build_depend&gt;message_generation&lt;/build_depend&gt; --&gt;</span>
+  <span style="color: #888888">&lt;!-- Use buildtool_depend for build tool packages: --&gt;</span>
+  <span style="color: #888888">&lt;!--   &lt;buildtool_depend&gt;catkin&lt;/buildtool_depend&gt; --&gt;</span>
+  <span style="color: #888888">&lt;!-- Use run_depend for packages you need at runtime: --&gt;</span>
+  <span style="color: #888888">&lt;!--   &lt;run_depend&gt;message_runtime&lt;/run_depend&gt; --&gt;</span>
+  <span style="color: #888888">&lt;!-- Use test_depend for packages you need only for testing: --&gt;</span>
+  <span style="color: #888888">&lt;!--   &lt;test_depend&gt;gtest&lt;/test_depend&gt; --&gt;</span>
+  <span style="color: #007700">&lt;buildtool_depend&gt;</span>catkin<span style="color: #007700">&lt;/buildtool_depend&gt;</span>
+  <span style="color: #007700">&lt;build_depend&gt;</span>rosjava_build_tools<span style="color: #007700">&lt;/build_depend&gt;</span>
+  <span style="color: #007700">&lt;build_depend&gt;</span>geometry_msgs<span style="color: #007700">&lt;/build_depend&gt;</span>
+  <span style="color: #007700">&lt;run_depend&gt;</span>geometry_msgs<span style="color: #007700">&lt;/run_depend&gt;</span>
+
+
+  <span style="color: #888888">&lt;!-- The export tag contains other, unspecified, tags --&gt;</span>
+  <span style="color: #007700">&lt;export&gt;</span>
+    <span style="color: #888888">&lt;!-- You can specify that this package is a metapackage here: --&gt;</span>
+    <span style="color: #888888">&lt;!-- &lt;metapackage/&gt; --&gt;</span>
+
+    <span style="color: #888888">&lt;!-- Other tools can request additional information be placed here --&gt;</span>
+
+  <span style="color: #007700">&lt;/export&gt;</span>
+<span style="color: #007700">&lt;/package&gt;</span>
+</pre></div>
+
+* The lines ```<build_depend>geometry_msgs</build_depend>``` and ```<run_depend>geometry_msgs</run_depend>``` to add [geometry_msgs](http://wiki.ros.org/geometry_msgs).
+
+<!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #008800; font-weight: bold">import</span> <span style="color: #0e84b5; font-weight: bold">org.ros.concurrent.CancellableLoop</span><span style="color: #333333">;</span>
+<span style="color: #008800; font-weight: bold">import</span> <span style="color: #0e84b5; font-weight: bold">org.ros.namespace.GraphName</span><span style="color: #333333">;</span>
+<span style="color: #008800; font-weight: bold">import</span> <span style="color: #0e84b5; font-weight: bold">org.ros.node.AbstractNodeMain</span><span style="color: #333333">;</span>  <span style="color: #888888">// This library give us the AbstractNodeMain interface (see ahead)</span>
+<span style="color: #008800; font-weight: bold">import</span> <span style="color: #0e84b5; font-weight: bold">org.ros.node.ConnectedNode</span><span style="color: #333333">;</span>
+<span style="color: #008800; font-weight: bold">import</span> <span style="color: #0e84b5; font-weight: bold">org.ros.node.NodeMain</span><span style="color: #333333">;</span>          
+<span style="color: #008800; font-weight: bold">import</span> <span style="color: #0e84b5; font-weight: bold">org.ros.node.topic.Publisher</span><span style="color: #333333">;</span>  <span style="color: #888888">// Import the publisher</span>
+<span style="color: #008800; font-weight: bold">import</span> <span style="color: #0e84b5; font-weight: bold">geometry_msgs.Twist</span><span style="color: #333333">;</span>           <span style="color: #888888">// Import geometry_msgs.Twist ... remember to incluse this message into your dependencie files </span>
+</pre></div>
+
+
+Import a bunch of ROSjava classes that will be used in our code.   
+[CancellableLoop](http://docs.rosjava.googlecode.com/hg/rosjava_core/html/javadoc/org/ros/concurrent/CancellableLoop.html) this is a loop that can be used similarly to the python command ```` while not rospy.is_shutdown():```.   
+[AbstractNodeMain](http://docs.rosjava.googlecode.com/hg/rosjava_core/html/javadoc/org/ros/node/AbstractNodeMain.html) every node made in ROSJava must extend this abstract class in order to be viewed as a node.   
+[ConnectedNode](http://docs.rosjava.googlecode.com/hg/rosjava_core/html/javadoc/org/ros/node/ConnectedNode.html) class for connected nodes (use explained ahead).   
+[topic.Publisher](http://docs.rosjava.googlecode.com/hg/rosjava_core/html/javadoc/org/ros/node/topic/Publisher.html) makes the publish interface available to implement.    
+[geometry_msgs.Twist](http://docs.ros.org/api/geometry_msgs/html/msg/Twist.html) import Twist messages.
+
+~~~java
+  public void onStart(final ConnectedNode connectedNode) {
+    final Publisher<geometry_msgs.Twist> publisher =
+        connectedNode.newPublisher("/turtle1/cmd_vel", geometry_msgs.Twist._TYPE); // That's how you create a publisher in Java!
+~~~
+
+On running time ```ConnectedNode connectedNode``` gives the connection between your node and the ```roscore`` **master** running.
+Afterwards, a **publisher** is created from the connection, where the topic and message type is defined respectively.
+
+~~~java
+    connectedNode.executeCancellableLoop(new CancellableLoop() {
+      private int sequenceNumber;
+
+      @Override
+      protected void setup() {
+        sequenceNumber = 0;
+      }
+~~~
+
+On the first line an **CancellableLoop** class is passed to be executed in our executing node. And initialize a ```sequenceNumber``` variable to keep track of the times that the loop is exectued.
+
+~~~java
+@Override
+      protected void loop() throws InterruptedException {
+        geometry_msgs.Twist twist = publisher.newMessage(); // Init a msg variable that of the publisher type
+        sequenceNumber++;
+
+        if (sequenceNumber % 3 == 0) {          // Every 3 executions of the loop (aprox. 3*1000ms = 3 sec)
+          twist.getAngular().setZ(Math.PI/2);   // Steer the turtle left
+        }
+        else{
+          twist.getLinear().setX(2);            // In the meantime keeps going foward 
+        }
+        
+        publisher.publish(twist);       // Publish the message (if running use rostopic list to see the message)
+
+        Thread.sleep(1000);             // Sleep for 1000 ms = 1 sec
+      }
+    });
+  }
+}
+~~~
+
+**CancellableLoop** must ```have a loop()``` method, which is obviously the loop that will be executed until the node is killed or stopped. ''' if (sequenceNumber % 3 == 0)''' at every 3 executions of the loop a twist message with a rotation on the Z-axis of 90 degrees is created to make the robot steer to the left. In every other execution a forward velocity twist message is created.
+Finally, ```publisher.publish(twist);``` published the message and the node sleeps for 1000 ms.
+
+##Compiling the Code##
+There are two ways to compile your code:
+1. Go to your workspace root directory and do a ```catkin_make```
+2. Sometimes doing a ```catkin_make``` can take ages! In this cases you can have **gradle** to compile your local package. In order to do this go to your sub project directory and execute ```../gradlew installApp```. Again, check the Writing a [Simple Publisher and Subscriber](http://wiki.ros.org/rosjava_build_tools/Tutorials/hydro/WritingPublisherSubscriber%28Java%29) tutorial for more information.
+
+##You're ready to execute it...##
+Execute a master ```roscore```, pop up the turtlesim ```rosrun turtlesim turtlesim_node``` and execute your brand new Java node to see your turtle draw squares!
+
+###Remembering...###
+To run your node go into:  
+```> cd src/rosjava_catkin_package_a/my_pub_sub_tutorial/build/install/my_pub_sub_tutorial/bin```  
+and use the following command  
+```> ./my_pub_sub_tutorial com.github.rosjava_catkin_package_a.my_pub_sub_tutorial.Talker```
+ 
+

@@ -11,4 +11,46 @@ layout: main
 
 	</section>
 
+	<style>
+article {
+    border: 2px solid black;
+    background-color: lightgrey;
+    width: 300px;
+    padding: 20px;
+    margin: 10px;
+}
+</style>
+
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+    var ToC = "<nav role='navigation' class='table-of-contents'>" +
+    "<h2>On this page:</h2>" +
+    "<ul>";
+    var el, title, link;
+
+    $("h1,h2,h3,h4").each(function() {
+
+    el = $(this);
+    if (el.attr("id") != "index-ignore" && el.attr("id") != "portfolio-header" &&el.attr("id") != "project-title" && el.attr("id") != "project-date") {
+      title = el.text();
+      link = "#" + el.attr("id");
+
+      newLine =
+        "<li>" +
+          "<a href='" + link + "'>" +
+            title +
+          "</a>" +
+        "</li>";
+
+      ToC += newLine;
+    }
+});
+    ToC += "</ul>" + "</nav>";
+    $("article").prepend(ToC);
+});
+</script>
+</head>
+
 </main>
