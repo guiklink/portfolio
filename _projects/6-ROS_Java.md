@@ -5,31 +5,27 @@ date: February 10, 2015
 image: https://github.com/guiklink/portfolio/blob/gh-pages/public/images/ROS_Java/ROS_JAVA.png?raw=true
 ---
 
-
-
 <article></article>
 
 [Repository](https://github.com/guiklink/ME495_Rosjava_Startup)
 
-<h2>Introduction</h2>
-This is a tutorial of how to get started with ROS Java by getting the [turtlesim](http://wiki.ros.org/turtlesim) walking in a square using [Java](https://en.wikipedia.org/wiki/Java_(programming_language)).
+#Introduction 
+This is a tutorial of how to get started with ROS Java by getting the [turtlesim](http://wiki.ros.org/turtlesim) walking in a square using [Java](https://en.wikipedia.org/wiki/Java_(programming_language)).   
+ <br/>
 
-<br>
-<h2> Installing rosjava</h2>
+##Installing rosjava
 First install the source by following the steps [here](http://wiki.ros.org/rosjava/Tutorials/indigo/Source%20Installation). After installation if your not able to *catkin make* your workspace make sure you update all the packages (run a *'sudo apt-get update'* on a terminal). All the basic documentation about ROS Java, like how to create packages, messages and building libraries are documented [here](http://wiki.ros.org/rosjava) (you might have to change it for Indigo).   
+<br/>
 
-<br>  
-<h2> Writing a Simple Publisher and Subscriber (Java)</h2>
-
+##Writing a Simple Publisher and Subscriber
 A typical rosjava workspace looks slightly different than a ROS workspace, since it is not as tightly integrated with ROS as rospy or roscpp. Instead, rosjava uses [Gradle](http://www.gradle.org/) and [Maven](http://maven.apache.org/). The last is a build automation tool used primarily for Java projects. Maven addresses two aspects of building software: First, it describes how software is built, and second, it describes its dependencies. It also forces a lot of best practices and standards. Most of the java community uses Maven repository structure and standards as well as the dependency management. Gradle has a Maven plugin that adds support for deploying to Maven repositories. 
+<br/>
 
-<br>
-<h2> Creating Rosjava Packages</h2>
-
+##Creating Rosjava Packages {#crt-pakgs}
 First, create a wokspace for your project. Then, create a [rosjava package](http://wiki.ros.org/rosjava_build_tools/Tutorials/hydro/Creating%20Rosjava%20Packages). Follow the directions upto step 5.1.Binary Projects (App) and then continue to the next step [Writing a Simple Publisher and Subscriber (Java)](http://wiki.ros.org/rosjava_build_tools/Tutorials/hydro/WritingPublisherSubscriber%28Java%29). [Note: Do not execute Step 5.2.Library Project. It seems to break catkin_make and compilation error follows anything you do in rosjava after that].
+<br/>
 
 ### Repository Structure
-
 When you run catkin_create_rosjava_pkg, rosjava create the repository slightly different to usual ros repository structures.
 
 
@@ -197,48 +193,48 @@ Import a bunch of ROSjava classes that will be used in our code.
 [topic.Publisher](http://docs.rosjava.googlecode.com/hg/rosjava_core/html/javadoc/org/ros/node/topic/Publisher.html) makes the publish interface available to implement.    
 [geometry_msgs.Twist](http://docs.ros.org/api/geometry_msgs/html/msg/Twist.html) import Twist messages.
 
-~~~java
-  public void onStart(final ConnectedNode connectedNode) {
-    final Publisher<geometry_msgs.Twist> publisher =
-        connectedNode.newPublisher("/turtle1/cmd_vel", geometry_msgs.Twist._TYPE); // That's how you create a publisher in Java!
-~~~
+<div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%">  <span style="color: #008800; font-weight: bold">public</span> <span style="color: #333399; font-weight: bold">void</span> <span style="color: #0066BB; font-weight: bold">onStart</span><span style="color: #333333">(</span><span style="color: #008800; font-weight: bold">final</span> ConnectedNode connectedNode<span style="color: #333333">)</span> <span style="color: #333333">{</span>
+    <span style="color: #008800; font-weight: bold">final</span> Publisher<span style="color: #333333">&lt;</span>geometry_msgs<span style="color: #333333">.</span><span style="color: #0000CC">Twist</span><span style="color: #333333">&gt;</span> publisher <span style="color: #333333">=</span>
+        connectedNode<span style="color: #333333">.</span><span style="color: #0000CC">newPublisher</span><span style="color: #333333">(</span><span style="background-color: #fff0f0">&quot;/turtle1/cmd_vel&quot;</span><span style="color: #333333">,</span> geometry_msgs<span style="color: #333333">.</span><span style="color: #0000CC">Twist</span><span style="color: #333333">.</span><span style="color: #0000CC">_TYPE</span><span style="color: #333333">);</span> <span style="color: #888888">// That&#39;s how you create a publisher in Java!</span>
+</pre></div>
+
 
 On running time ```ConnectedNode connectedNode``` gives the connection between your node and the ```roscore`` **master** running.
 Afterwards, a **publisher** is created from the connection, where the topic and message type is defined respectively.
 
-~~~java
-    connectedNode.executeCancellableLoop(new CancellableLoop() {
-      private int sequenceNumber;
+<div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%">    connectedNode<span style="color: #333333">.</span><span style="color: #0000CC">executeCancellableLoop</span><span style="color: #333333">(</span><span style="color: #008800; font-weight: bold">new</span> CancellableLoop<span style="color: #333333">()</span> <span style="color: #333333">{</span>
+      <span style="color: #008800; font-weight: bold">private</span> <span style="color: #333399; font-weight: bold">int</span> sequenceNumber<span style="color: #333333">;</span>
 
-      @Override
-      protected void setup() {
-        sequenceNumber = 0;
-      }
-~~~
+      <span style="color: #555555; font-weight: bold">@Override</span>
+      <span style="color: #008800; font-weight: bold">protected</span> <span style="color: #333399; font-weight: bold">void</span> <span style="color: #0066BB; font-weight: bold">setup</span><span style="color: #333333">()</span> <span style="color: #333333">{</span>
+        sequenceNumber <span style="color: #333333">=</span> <span style="color: #0000DD; font-weight: bold">0</span><span style="color: #333333">;</span>
+      <span style="color: #333333">}</span>
+</pre></div>
+
 
 On the first line an **CancellableLoop** class is passed to be executed in our executing node. And initialize a ```sequenceNumber``` variable to keep track of the times that the loop is exectued.
 
-~~~java
-@Override
-      protected void loop() throws InterruptedException {
-        geometry_msgs.Twist twist = publisher.newMessage(); // Init a msg variable that of the publisher type
-        sequenceNumber++;
+<div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #555555; font-weight: bold">@Override</span>
+      <span style="color: #008800; font-weight: bold">protected</span> <span style="color: #333399; font-weight: bold">void</span> <span style="color: #0066BB; font-weight: bold">loop</span><span style="color: #333333">()</span> <span style="color: #008800; font-weight: bold">throws</span> InterruptedException <span style="color: #333333">{</span>
+        geometry_msgs<span style="color: #333333">.</span><span style="color: #0000CC">Twist</span> twist <span style="color: #333333">=</span> publisher<span style="color: #333333">.</span><span style="color: #0000CC">newMessage</span><span style="color: #333333">();</span> <span style="color: #888888">// Init a msg variable that of the publisher type</span>
+        sequenceNumber<span style="color: #333333">++;</span>
 
-        if (sequenceNumber % 3 == 0) {          // Every 3 executions of the loop (aprox. 3*1000ms = 3 sec)
-          twist.getAngular().setZ(Math.PI/2);   // Steer the turtle left
-        }
-        else{
-          twist.getLinear().setX(2);            // In the meantime keeps going foward 
-        }
+        <span style="color: #008800; font-weight: bold">if</span> <span style="color: #333333">(</span>sequenceNumber <span style="color: #333333">%</span> <span style="color: #0000DD; font-weight: bold">3</span> <span style="color: #333333">==</span> <span style="color: #0000DD; font-weight: bold">0</span><span style="color: #333333">)</span> <span style="color: #333333">{</span>          <span style="color: #888888">// Every 3 executions of the loop (aprox. 3*1000ms = 3 sec)</span>
+          twist<span style="color: #333333">.</span><span style="color: #0000CC">getAngular</span><span style="color: #333333">().</span><span style="color: #0000CC">setZ</span><span style="color: #333333">(</span>Math<span style="color: #333333">.</span><span style="color: #0000CC">PI</span><span style="color: #333333">/</span><span style="color: #0000DD; font-weight: bold">2</span><span style="color: #333333">);</span>   <span style="color: #888888">// Steer the turtle left</span>
+        <span style="color: #333333">}</span>
+        <span style="color: #008800; font-weight: bold">else</span><span style="color: #333333">{</span>
+          twist<span style="color: #333333">.</span><span style="color: #0000CC">getLinear</span><span style="color: #333333">().</span><span style="color: #0000CC">setX</span><span style="color: #333333">(</span><span style="color: #0000DD; font-weight: bold">2</span><span style="color: #333333">);</span>            <span style="color: #888888">// In the meantime keeps going foward </span>
+        <span style="color: #333333">}</span>
         
-        publisher.publish(twist);       // Publish the message (if running use rostopic list to see the message)
+        publisher<span style="color: #333333">.</span><span style="color: #0000CC">publish</span><span style="color: #333333">(</span>twist<span style="color: #333333">);</span>       <span style="color: #888888">// Publish the message (if running use rostopic list to see the message)</span>
 
-        Thread.sleep(1000);             // Sleep for 1000 ms = 1 sec
-      }
-    });
-  }
-}
-~~~
+        Thread<span style="color: #333333">.</span><span style="color: #0000CC">sleep</span><span style="color: #333333">(</span><span style="color: #0000DD; font-weight: bold">1000</span><span style="color: #333333">);</span>             <span style="color: #888888">// Sleep for 1000 ms = 1 sec</span>
+      <span style="color: #333333">}</span>
+    <span style="color: #333333">});</span>
+  <span style="color: #333333">}</span>
+<span style="color: #333333">}</span>
+</pre></div>
+
 
 **CancellableLoop** must ```have a loop()``` method, which is obviously the loop that will be executed until the node is killed or stopped. ''' if (sequenceNumber % 3 == 0)''' at every 3 executions of the loop a twist message with a rotation on the Z-axis of 90 degrees is created to make the robot steer to the left. In every other execution a forward velocity twist message is created.
 Finally, ```publisher.publish(twist);``` published the message and the node sleeps for 1000 ms.
