@@ -1,11 +1,14 @@
 ---
 layout: project
 title: Flying Robots
+repository:
 date: February 10, 2015
 image: https://github.com/guiklink/portfolio/blob/gh-pages/public/images/pj2_logo_small.JPG?raw=true
 ---
 
-# Intro
+<article></article><br/>
+
+# Introduction
 Coming from an undergrad in Computer Science, a work experience in developing and market studies, I challenged myself in getting in the world of UAV's, by studying their dynamics, physics and control techniques. I believe that a daily collaboration between humans and UAV's, would be quite interesting. At this point, I do not expect drones to be helping us to carry burdensome loads of weight, the energy and aerodynamics for that is not easily available, or grasping complicated objects, after all that could be years of someone's PhD thesis in robot manipulation. Instead, what if I could use some Control, Artificial Intelligence and Computer Vision techniques to transform my UAV into something like this:
 
 ![navi_following](https://github.com/guiklink/portfolio/blob/gh-pages/public/images/flying_robots/navi_following.jpg?raw=true) ![navi_friend](https://github.com/guiklink/portfolio/blob/gh-pages/public/images/flying_robots/navi_friend.jpg?raw=true)  
