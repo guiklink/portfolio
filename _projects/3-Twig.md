@@ -1,11 +1,12 @@
 ---
 layout: project
 title: Twig Walking Animation
+repository: https://github.com/guiklink/Unity3d_Twig
 date: August 31, 2015
 image: https://github.com/guiklink/portfolio/blob/gh-pages/public/images/twig/Twig_logo.png?raw=true
 ---
 
-### [Repository](https://github.com/guiklink/Unity3d_Twig)
+<article></article><br/>
 
 <iframe src="https://player.vimeo.com/video/137813432" width="758" height="426" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe> <p><a href="https://vimeo.com/137813432">Simple walking GAIT</a> from <a href="https://vimeo.com/user43396191">Guilherme Klink</a> on <a href="https://vimeo.com">Vimeo</a>.</p>
 
