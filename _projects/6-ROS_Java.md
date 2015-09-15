@@ -55,7 +55,7 @@ When you run catkin_create_rosjava_pkg, rosjava create the repository slightly d
 </table>
 <br>
 
-<h2>Compiling with Gradle</h2>
+##Compiling with Gradle
 
 When you run catkin_make, cMake runs through your entire workspace and when it gets to your new project, it will pass off the build to gradle.You could alternatively just compile your subproject alone with gradle (much faster than running catkin_make across your entire workspace):
 
@@ -64,20 +64,20 @@ cd src<span style="color: #333333">/</span>rosjava_catkin_package_a<span style="
 <span style="color: #333333">../</span>gradlew installApp
 </pre></div>
 
-<br>
-<h1>Sending Messages for the Turtle</h1>
+<br/>
+#Sending Messages for the Turtle
 
 Now let's walk though on how to change the **Writing a Simple Publisher and Subscriber** subproject in order to publish messages for the [turtlesim](http://wiki.ros.org/turtlesim). Also, you can `git clone` the final package from [here](https://github.com/guiklink/ME495_Rosjava_Startup).
 
 *NOTE:* Create a [Simple Publisher and Subscriber](http://wiki.ros.org/rosjava_build_tools/Tutorials/hydro/WritingPublisherSubscriber%28Java%29) subproject if you still have not yet.    
 
-<br>
-<h2>Adding Dependencies</h2>
+<br/>
+##Adding Dependencies
 First, we need to add the dependencies we are going to be using for this task. Remember that the [turtlesim](http://wiki.ros.org/turtlesim) subscribes to 'geometry_msgs.Twist' ROS message, therefore we must make sure that the compiler is aware of this to build our executables.
  
 Go inside your **rosjava** package (**rosjava_catkin_package_a** if you strickly followed the tutorial above) and open the [CmakeList.txt](https://github.com/guiklink/ME495_Rosjava_Startup/blob/master/CMakeLists.txt) and [package.xml](https://github.com/guiklink/ME495_Rosjava_Startup/blob/master/package.xml).
 
-<h3><em>CmakeList.txt</em></h3>
+###*CmakeList.txt*
 <div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%">##############################################################################
 # CMake
 ##############################################################################
@@ -113,9 +113,10 @@ install(DIRECTORY ${CATKIN_DEVEL_PREFIX}/${CATKIN_GLOBAL_MAVEN_DESTINATION}/com/
 
 * The code line  ```find_package(catkin REQUIRED COMPONENTS geometry_msgs)``` must be added to include [geometry_msgs](http://wiki.ros.org/geometry_msgs).
 
-<br>
-<h3><em>package.xml</em></h3>
-<!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #557799">&lt;?xml version=&quot;1.0&quot;?&gt;</span>
+
+### package.xml
+
+<div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #557799">&lt;?xml version=&quot;1.0&quot;?&gt;</span>
 <span style="color: #007700">&lt;package&gt;</span>
   <span style="color: #007700">&lt;name&gt;</span>rosjava_catkin_package_a<span style="color: #007700">&lt;/name&gt;</span>
   <span style="color: #007700">&lt;version&gt;</span>0.1.0<span style="color: #007700">&lt;/version&gt;</span>
@@ -185,12 +186,13 @@ install(DIRECTORY ${CATKIN_DEVEL_PREFIX}/${CATKIN_GLOBAL_MAVEN_DESTINATION}/com/
 </pre></div>
 
 
-Import a bunch of ROSjava classes that will be used in our code.   
-[CancellableLoop](http://docs.rosjava.googlecode.com/hg/rosjava_core/html/javadoc/org/ros/concurrent/CancellableLoop.html) this is a loop that can be used similarly to the python command ```` while not rospy.is_shutdown():```.   
-[AbstractNodeMain](http://docs.rosjava.googlecode.com/hg/rosjava_core/html/javadoc/org/ros/node/AbstractNodeMain.html) every node made in ROSJava must extend this abstract class in order to be viewed as a node.   
-[ConnectedNode](http://docs.rosjava.googlecode.com/hg/rosjava_core/html/javadoc/org/ros/node/ConnectedNode.html) class for connected nodes (use explained ahead).   
-[topic.Publisher](http://docs.rosjava.googlecode.com/hg/rosjava_core/html/javadoc/org/ros/node/topic/Publisher.html) makes the publish interface available to implement.    
-[geometry_msgs.Twist](http://docs.ros.org/api/geometry_msgs/html/msg/Twist.html) import Twist messages.
+Import a bunch of ROSjava classes that will be used in our code. 
+
+* [CancellableLoop](http://docs.rosjava.googlecode.com/hg/rosjava_core/html/javadoc/org/ros/concurrent/CancellableLoop.html) this is a loop that can be used similarly to the python command  **while not rospy.is_shutdown()**.   
+* [AbstractNodeMain](http://docs.rosjava.googlecode.com/hg/rosjava_core/html/javadoc/org/ros/node/AbstractNodeMain.html) every node made in ROSJava must extend this abstract class in order to be viewed as a node.   
+* [ConnectedNode](http://docs.rosjava.googlecode.com/hg/rosjava_core/html/javadoc/org/ros/node/ConnectedNode.html) class for connected nodes (use explained ahead).   
+* [topic.Publisher](http://docs.rosjava.googlecode.com/hg/rosjava_core/html/javadoc/org/ros/node/topic/Publisher.html) makes the publish interface available to implement.    
+* [geometry_msgs.Twist](http://docs.ros.org/api/geometry_msgs/html/msg/Twist.html) import Twist messages.
 
 <div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%">  <span style="color: #008800; font-weight: bold">public</span> <span style="color: #333399; font-weight: bold">void</span> <span style="color: #0066BB; font-weight: bold">onStart</span><span style="color: #333333">(</span><span style="color: #008800; font-weight: bold">final</span> ConnectedNode connectedNode<span style="color: #333333">)</span> <span style="color: #333333">{</span>
     <span style="color: #008800; font-weight: bold">final</span> Publisher<span style="color: #333333">&lt;</span>geometry_msgs<span style="color: #333333">.</span><span style="color: #0000CC">Twist</span><span style="color: #333333">&gt;</span> publisher <span style="color: #333333">=</span>
@@ -198,7 +200,7 @@ Import a bunch of ROSjava classes that will be used in our code.
 </pre></div>
 
 
-On running time ```ConnectedNode connectedNode``` gives the connection between your node and the ```roscore`` **master** running.
+On running time **ConnectedNode connectedNode** gives the connection between your node and the **roscore master** running.
 Afterwards, a **publisher** is created from the connection, where the topic and message type is defined respectively.
 
 <div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%">    connectedNode<span style="color: #333333">.</span><span style="color: #0000CC">executeCancellableLoop</span><span style="color: #333333">(</span><span style="color: #008800; font-weight: bold">new</span> CancellableLoop<span style="color: #333333">()</span> <span style="color: #333333">{</span>
@@ -235,21 +237,27 @@ On the first line an **CancellableLoop** class is passed to be executed in our e
 </pre></div>
 
 
-**CancellableLoop** must ```have a loop()``` method, which is obviously the loop that will be executed until the node is killed or stopped. ''' if (sequenceNumber % 3 == 0)''' at every 3 executions of the loop a twist message with a rotation on the Z-axis of 90 degrees is created to make the robot steer to the left. In every other execution a forward velocity twist message is created.
+**CancellableLoop** must have a **loop()** method, which is obviously the loop that will be executed until the node is killed or stopped. ''' if (sequenceNumber % 3 == 0)''' at every 3 executions of the loop a twist message with a rotation on the Z-axis of 90 degrees is created to make the robot steer to the left. In every other execution a forward velocity twist message is created.
 Finally, ```publisher.publish(twist);``` published the message and the node sleeps for 1000 ms.
 
-##Compiling the Code##
+##Compiling the Code
 There are two ways to compile your code:
 1. Go to your workspace root directory and do a ```catkin_make```
 2. Sometimes doing a ```catkin_make``` can take ages! In this cases you can have **gradle** to compile your local package. In order to do this go to your sub project directory and execute ```../gradlew installApp```. Again, check the Writing a [Simple Publisher and Subscriber](http://wiki.ros.org/rosjava_build_tools/Tutorials/hydro/WritingPublisherSubscriber%28Java%29) tutorial for more information.
 
-##You're ready to execute it...##
-Execute a master ```roscore```, pop up the turtlesim ```rosrun turtlesim turtlesim_node``` and execute your brand new Java node to see your turtle draw squares!
+##You're ready to execute it...
+Execute a master **roscore**, pop up the turtlesim **rosrun turtlesim turtlesim_node** and execute your brand new Java node to see your turtle draw squares!
 
-###Remembering...###
+###Remembering...
 To run your node go into:  
-```> cd src/rosjava_catkin_package_a/my_pub_sub_tutorial/build/install/my_pub_sub_tutorial/bin```  
-and use the following command  
-```> ./my_pub_sub_tutorial com.github.rosjava_catkin_package_a.my_pub_sub_tutorial.Talker```
+
+<div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%">&gt; cd src/rosjava_catkin_package_a/my_pub_sub_tutorial/build/install/my_pub_sub_tutorial/bin
+</pre></div>
+  
+and use the following command
+
+<div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%">&gt; ./my_pub_sub_tutorial com.github.rosjava_catkin_package_a.my_pub_sub_tutorial.Talker
+</pre></div>
+
  
 
