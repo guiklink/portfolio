@@ -6,9 +6,11 @@ date: February 10, 2015
 image: https://github.com/guiklink/portfolio/blob/gh-pages/public/images/A_star/logo.png?raw=true
 ---
 
+# Page On Construction {#index-ignore}
+
 <article></article><br/>
 
-# On Construction
+
 
 # Introduction
 
