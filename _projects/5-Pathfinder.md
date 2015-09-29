@@ -21,7 +21,7 @@ Exploration robots are able move in complex environtments using its censors to d
 # Real Time A*
 The real time A* is not only a neat way to see the execution of the A* module but also a good way to see if it is working the way I desired. As said before this interface uses the Pygame library and in order to make it work a start point and end point (obstacles are optional) need to be input. The box bellow shows the keys instructions:
 
-![Image of the Key functions]()
+![Live_aStar_Legend](https://github.com/guiklink/portfolio/blob/gh-pages/public/images/A_star/Live_aStar_Legend.png?raw=true)
 
 # Graph Path Finder
 For this approach, given a graph composed by an **N** number of nodes where a route is a straight line between each node, the alghorithm will try to compute the sequence of routes it will take a starting node to an end node. Although, it will not consider rotes that goes through or collide with an obstacle (the robot will have a radius).
