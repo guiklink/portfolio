@@ -85,6 +85,10 @@ The diagram below shows the schematic of the state transition:
 Moving the arms for walking in theory is very simple, a torque is added on the shoulder joint and elbow joint as soon as the opposite step is given. Still, a lots of constants needs to be properly calibrated, the initial amount of torque needs to be adjusted according to different types of ragdolls and different walking speeds.  
 A mathematical function actuating as a spring damping gives the arm a more natural oscillating behavior. The amount and damping frequency of this function also can be customized to different ragdoll models.
 
+### Right Arm Swing {#index-ignore}
+![arm_swing_front](https://github.com/guiklink/portfolio/blob/gh-pages/public/images/twig/arm_swinging_front.png?raw=true)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+![arm_swing_back](https://github.com/guiklink/portfolio/blob/gh-pages/public/images/twig/arm_swinging_back.png?raw=true)
+
 # Next Steps
 
 * Develop a running GAIT
