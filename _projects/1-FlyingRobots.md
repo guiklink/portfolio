@@ -93,4 +93,4 @@ A controller able to yaw and move the drone so it is always facing the referenti
 
 ## Resources {#index-ignore}
 
-* [AR Drone Tutorials](https://github.com/mikehamer/ardrone_tutorials)
+* [AR Drone Tutorials](http://robohub.org/up-and-flying-with-the-ar-drone-and-ros-getting-started/)
