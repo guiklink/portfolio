@@ -8,7 +8,7 @@ image: https://github.com/guiklink/portfolio/blob/gh-pages/public/images/twig/Tw
 
 <article></article><br/>
 
-<iframe src="https://player.vimeo.com/video/137813432" width="758" height="426" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe> <p><a href="https://vimeo.com/137813432">Simple walking GAIT</a> from <a href="https://vimeo.com/user43396191">Guilherme Klink</a> on <a href="https://vimeo.com">Vimeo</a>.</p>
+<iframe src="https://player.vimeo.com/video/137813432" width="1137" height="639" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe> <p><a href="https://vimeo.com/137813432">Simple walking GAIT</a> from <a href="https://vimeo.com/user43396191">Guilherme Klink</a> on <a href="https://vimeo.com">Vimeo</a>.</p>
 
 # Introduction
 Aiming to top their sales and reach more players, video game producers found out that the secret to make a best selling game is it to make it realistic.  
@@ -52,7 +52,7 @@ The figure above exmplifies how the reference point for the hips is calculated. 
 ### PID Gains {#index-ignore} 
 Configuring the gains of the controller was challenging, as I said before getting a stable position was crucial for the walking. Too big gains makes the ragdoll to move unrealistic fast or keep contantly shaking, while to small gains would not be enought to rise the doll in a appropriate standing pose. After I got a raw tuning of the proportional gain, I tunned the other PID constants by throwing different weights on my ragdoll and looking at its response, as shown in the video bellow.
 
-<iframe src="https://player.vimeo.com/video/137815980" width="500" height="281" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe> <p><a href="https://vimeo.com/137815980">Testing PID gains</a> from <a href="https://vimeo.com/user43396191">Guilherme Klink</a> on <a href="https://vimeo.com">Vimeo</a>.</p>
+<iframe src="https://player.vimeo.com/video/137815980" width="750" height="423" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe> <p><a href="https://vimeo.com/137815980">Testing PID gains</a> from <a href="https://vimeo.com/user43396191">Guilherme Klink</a> on <a href="https://vimeo.com">Vimeo</a>.</p>
 
 ## The State Machine For Walking
 The ragdoll has over fifteen rigid bodies and more than double number of joints, keep tracking of what it of this parts will be doing during a walking is not an ordinary task, many bugs were conceived by actuators or scripts not synchronized appropriately. Moreover, in the future my ragdoll will have more gaits other than walking (e.g. running, kicking, seating). To manage how all body parts are actuated, which movement will be performed and facilitate debugging I used a state machine script, perhaps the biggest difference of my approach of Twig in comparison to the one original work from Professor Horswill.
