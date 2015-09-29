@@ -39,7 +39,7 @@ The Unity3D analogy for that would be the 3D ragdoll, a  character represented b
 **PS:** It is recommended that the rigged body is saved in a "T" like position. 
 
 ## Configuring Colliders and Ragdoll Joints
-The Ragdoll Wizard does a very good job for you in setting the raw ragdoll, however from my experience, if you want your character to be working properly and avoid having to redo work I strongly encourage you to spend some time doing a more detailed tuning on your character. FOr a more detailled description on how I have configured my ragdoll click [here]().
+The Ragdoll Wizard does a very good job for you in setting the raw ragdoll, however from my experience, if you want your character to be working properly and avoid having to redo work I strongly encourage you to spend some time doing a more detailed tuning on your character. 
 
 ### Colliders {#index-ignore}
 The Unity physics engine uses the [colliders boxes](http://docs.unity3d.com/Manual/class-BoxCollider.html) to calculate collisions and you can use them in your scripts to trigger events. By default the Ragdoll Wizard usually makes the colliders way bigger than what you really need (see raw the colliders in green on the figure bellow), what makes the ragdoll to move in a clumsy and sometime even unexpected ways. For my character I made sure they were almost overlapping with  the real size of each respective rigid body. 
