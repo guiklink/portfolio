@@ -176,6 +176,10 @@ install(DIRECTORY ${CATKIN_DEVEL_PREFIX}/${CATKIN_GLOBAL_MAVEN_DESTINATION}/com/
 
 * The lines ```<build_depend>geometry_msgs</build_depend>``` and ```<run_depend>geometry_msgs</run_depend>``` to add [geometry_msgs](http://wiki.ros.org/geometry_msgs).
 
+## The Java Publisher 
+
+Let's implement the class that will publish messages for the turtlesim to draw a square. The class file can be found [here](https://github.com/guiklink/ME495_Rosjava_Startup/blob/master/my_pub_sub_tutorial/src/main/java/com/github/rosjava_catkin_package_a/my_pub_sub_tutorial/Talker.java).
+
 <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #008800; font-weight: bold">import</span> <span style="color: #0e84b5; font-weight: bold">org.ros.concurrent.CancellableLoop</span><span style="color: #333333">;</span>
 <span style="color: #008800; font-weight: bold">import</span> <span style="color: #0e84b5; font-weight: bold">org.ros.namespace.GraphName</span><span style="color: #333333">;</span>
 <span style="color: #008800; font-weight: bold">import</span> <span style="color: #0e84b5; font-weight: bold">org.ros.node.AbstractNodeMain</span><span style="color: #333333">;</span>  <span style="color: #888888">// This library give us the AbstractNodeMain interface (see ahead)</span>
