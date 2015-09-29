@@ -11,20 +11,18 @@ image: https://github.com/guiklink/portfolio/blob/gh-pages/public/images/twig/Tw
 <iframe src="https://player.vimeo.com/video/137813432" width="758" height="426" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe> <p><a href="https://vimeo.com/137813432">Simple walking GAIT</a> from <a href="https://vimeo.com/user43396191">Guilherme Klink</a> on <a href="https://vimeo.com">Vimeo</a>.</p>
 
 # Introduction
-The game industry has been showing one of the fastest grows among all other sectors of the economy and estimated sales in 2015 will reach $111.1 billion dollars. With such accreditation and crescent competition among its ranks is no surprise that companies like Bungie invested $150 million dollars on its later game "Destiny" or Konami invested over $60 million dollars in its coming "Metal Gear Solid: Phantom Pain". Aiming to top their sales and reach more and more players, game producers found out that the secret to make a best selling game is it to make it immersive. Modern games improve the player experience by combining the narrative aspect of the movies and interactivity. In order to keep this immersion,  a key factor is realism, the player's experience can be instantly ravaged if realism is broken.   
+Aiming to top their sales and reach more players, video game producers found out that the secret to make a best selling game is it to make it realistic.  
 
-What is realism in something fictional?   
+However, what is realism in something fictional such a game?    
 
-The answer is simple, in games things need to behave, look and move according to what would be expected in the game "world". The game industry hires the best AI professionals to ensure that things in the game behave smartly and as expected, in fact lots of learning algorithms comes from games. The Final Fantasy franchise invested lots of resources in developing hair that looks so real that later was even incorporated in movies. The actor Kiefer Sutherland was hired to have his face motion captured just for the sake of perfectly  animating the face of the character Snake in Metal Gear using a technology similar to Hollywood Blockbusters.  
+The answer is simple, in games things need to behave, look and move accordingly to what would be expected in the "world" where the game takes place. In order to understand the purpose of Twig, let's talk about how things move accordingly. Animators design various sets of animations for every specific movement they expect the character to perform from running, jumping and fighting to even plucking a flower from the ground. A character will have different animations to sit in different chairs, just because the chair's size changes. At this point you probably already guessed, generating this huge animation library is very expensive and time taking, not to mention prohibitive for universities and independent developers.  
 
-In order to understand the purpose of Twig, let's talk about the last aspect of the previous paragraph, the animation. To make things move appropriately , animators design various sets of animations for every specific movement they expect the character to perform from running, jumping and fighting to even plucking a flower from the ground. A character will have different animations to sit in different chairs, just because the chair's size changes. At this point you probably already guessed, generating this huge animation library is very expensive and time taking, not to mention prohibitive for universities and independent developers.  
-
-What if instead of animating everything, we could use simplified a movement [GAIT](https://en.wikipedia.org/wiki/Gait)? Simple enough that it would not be to hard to implement nor require heavy processing power therefore not compromising other aspects of the game, but still able to adapt to small peculiarities and lower cost to produce. Twig was developed for these purposes by Professor Ian Douglas Horswill from Northwestern University.  
+The idea behind TWIG is to create a simplified movement [gait](https://en.wikipedia.org/wiki/Gait), simple enough that it would not be too hard to implement nor require heavy processing power, therefore not compromising other aspects of the game (e.g. AI and rendering), but still able to adapt to small peculiarities and with a lower cost to produce. Twig was developed by Professor Ian Douglas Horswill from Northwestern University.  
 
 My project consisted of creating a Twig walking GAIT for a biped humanoid. As shown in the video, the Twig GAIT implemented, although simple, would do a very good job as the GAIT of robot (I couldn't stop thinking about C3PO), a cartoon character or maybe a kid.
 
 # Unity3D
-To implement the Twig walking GAIT I used [Unity3D](http://unity3d.com/5?gclid=CNngyI300scCFYI7gQodzBYMlQ), for the following reasons:
+My implementation of Twig used Unity3D. [Unity3D](http://unity3d.com/5?gclid=CNngyI300scCFYI7gQodzBYMlQ) is a common simulation and graphics rendering engine used in generating virtual environments. Some benefits of Unity3D are as follows:
 
 1. It can be used in both Windows and MAC
 2. Produce games for all the most popular platforms and cellphones
@@ -32,9 +30,7 @@ To implement the Twig walking GAIT I used [Unity3D](http://unity3d.com/5?gclid=C
 4. It supports C#, making most of developer tools from Microsoft available
 5. It has a big and active community
 
-# Outline
-
-## Step 1: Getting a Ragdoll
+## Getting a Ragdoll
 A Twig kinematic character is composed by rigid rods (black lines) connected to each other by nodes (red dots) as shown in the figure bellow.
 
 ![Twig_Character](https://github.com/guiklink/portfolio/blob/gh-pages/public/images/twig/Twig%20doll.png?raw=true)
@@ -58,21 +54,21 @@ Once again Unity does not do everything automatically for us. The ragdoll uses t
 ### 2.3: Add the Foot Rigid Body
 By default the Ragdoll wizard does not add a [rigid body](http://docs.unity3d.com/Manual/class-Rigidbody.html) for the foot. In my implementation of Twig the forces that move the leg are added in the foot, the upper leg controller's only function is to lock undesired rotations so the character does not move in undesired ways. Therefore, I added a rigid body for the each foot and attached it to its respective leg through a [Character Joint](http://docs.unity3d.com/Manual/class-CharacterJoint.html). 
 
-## Step 3: Making the Ragdoll Stand
-Making the ragdoll stand was perhaps the most important step, since it needs to stand stable enough so it does not make the walking GAIT weird and too hard to implement. For this purpose a PID controller calculates the force necessary to maintain the body in a reference point. This controller is added in both the hips and head of the doll and maintains the center of mass of the respective body in a 3D reference (X, Y, Z) where Y is the height from the floor and X and Z is the midpoint of the feet in the XZ-plane (see the figure below).
+## Making the Ragdoll Stand
+Before being able to walk the ragdoll needs to be able to stand. This was perhaps the most important step, since it needs to stand stable and general enough so it do not complicate the implementation of other movements. For standing, PID controller applies force both in the hips and head, in order to maintain the center of mass of the body alligned according to a computated reference point. 
 
+### Computing the Reference Point {#index-ignore}
 ![Mid Point](https://github.com/guiklink/portfolio/blob/gh-pages/public/images/twig/midpoint.png?raw=true)
 
-One of the advantages of this implementation is that the ragdoll can easily crouch by reducing the referential value of Y. This controller was implemented in the script *StandSwat*.  
+The figure above exmplifies how the reference point for the hips is calculated. Having a 3D coordinates dictaded by the world-frame at the top right, Y is an arbitrary heigh from the floor and X and Z is the mid-point between the feet. There are two big advantages of calculating the reference point this way. First, by simply decreasing the value of Y you can easily make the ragdoll crouch, or by increasing and decreasing in a sequence you can make the ragdoll jump. Second, since X and Z is always updated as the mid-point of the feet, when one of the foot moves forward the mid-point will also move forward (the value of Z changes), thus the force that makes the upper body moves when walking will be automatically generated by the PID trying to allign to the new reference.
  
-Configuring the gains of the controller was challenging, as I said before getting a stable position was crucial for the walking, after I got a raw tuning of the proportional gain, I tunned the other PID constants by throwing different weights on my ragdoll and looking at its response, as shown in the video bellow.
+### PID Gains {#index-ignore} 
+Configuring the gains of the controller was challenging, as I said before getting a stable position was crucial for the walking. Too big gains makes the ragdoll to move unrealistic fast or keep contantly shaking, while to small gains would not be enought to rise the doll in a appropriate standing pose. After I got a raw tuning of the proportional gain, I tunned the other PID constants by throwing different weights on my ragdoll and looking at its response, as shown in the video bellow.
 
 <iframe src="https://player.vimeo.com/video/137815980" width="500" height="281" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe> <p><a href="https://vimeo.com/137815980">Testing PID gains</a> from <a href="https://vimeo.com/user43396191">Guilherme Klink</a> on <a href="https://vimeo.com">Vimeo</a>.</p>
- 
-In the video the constants are almost tuned still with some damping and integral needing to be added. In addition to standing, the script *StandSwat* is also responsible for rotating the body according to the referential given by the state machine.
 
-## Step 4: The State Machine
-The main difference of my approach of Twig in comparison to the one proposed by Professor Horswill is the use of a state machine to coordinate each actuator in the characters body. The most challenging part of this project and the main cause of bugs and misbehavior, is the fact that so many controllers works simultaneously to keep the GAIT compliant. In my opinion, using a state machine to manage when each part body will move and rotate makes implementing and debugging much easier. 
+## The State Machine for walking
+The ragdoll has over fifteen rigid bodies and more than double number of joints, keep tracking of what it of this parts will be doing during a walking is not an ordinary task, many bugs were conceived by actuators or scripts not synchronized appropriately. Moreover, in the future my ragdoll will have more gaits other than walking (e.g. running, kicking, seating). To manage how all body parts are actuated, which movement will be performed and facilitate debugging I used a state machine script, perhaps the biggest difference of my approach of Twig in comparison to the one original work from Professor Horswill.
 
 The diagram below shows the schematic of the state transition:
 
@@ -86,7 +82,8 @@ The diagram below shows the schematic of the state transition:
 **Rise to Stand:** When the system stops getting an input to walk, the next step will be made so both legs are aligned, then the ragdoll will raise its hips to the same height from where it started moving.  
 
 ## Step 5: Moving the Arms
-During walking the movement of the arms is fairly simple. Using the same state machine of the foot a discrete pre-configured inpulse is added on the oposite direction that the force is added on the feet. For example, at the state "Left Step" an inpulse is added on the right arm to the front and on the left arm to the back.
+Moving the arms for walking in theory is very simple, a torque is added on the shoulder joint and elbow joint as soon as the opposite step is given. Still, a lots of constants needs to be properly calibrated, the initial amount of torque needs to be adjusted according to different types of ragdolls and different walking speeds.  
+A mathematical function actuating as a spring damping gives the arm a more natural oscillating behavior. The amount and damping frequency of this function also can be customized to different ragdoll models.
 
 # Next Steps
 
