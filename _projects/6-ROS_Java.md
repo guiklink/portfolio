@@ -9,8 +9,10 @@ image: https://github.com/guiklink/portfolio/blob/gh-pages/public/images/ROS_Jav
 <article></article>
 
 #Introduction 
-This is a tutorial of how to get started with ROS Java by getting the [turtlesim](http://wiki.ros.org/turtlesim) walking in a square using [Java](https://en.wikipedia.org/wiki/Java_(programming_language)).   
+This is a tutorial of how to get started with ROS Java by getting the [turtlesim](http://wiki.ros.org/turtlesim) to walk in a square using [Java](https://en.wikipedia.org/wiki/Java_(programming_language)).   
  <br/>
+
+ ![square_turtlesim](https://github.com/guiklink/portfolio/blob/gh-pages/public/images/ROS_Java/ROSJava_turtlesim_example.gif?raw=true)
 
 ##Installing rosjava
 First install the source by following the steps [here](http://wiki.ros.org/rosjava/Tutorials/indigo/Source%20Installation). After installation if your not able to *catkin make* your workspace make sure you update all the packages (run a *'sudo apt-get update'* on a terminal). All the basic documentation about ROS Java, like how to create packages, messages and building libraries are documented [here](http://wiki.ros.org/rosjava) (you might have to change it for Indigo).   
