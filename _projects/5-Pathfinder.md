@@ -6,7 +6,6 @@ date: February 10, 2015
 image: https://github.com/guiklink/portfolio/blob/gh-pages/public/images/A_star/logo.png?raw=true
 ---
 
-{#index-ignore}
 
 <article></article><br/>
 
