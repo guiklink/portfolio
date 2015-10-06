@@ -6,7 +6,7 @@ date: February 10, 2015
 image: https://github.com/guiklink/portfolio/blob/gh-pages/public/images/A_star/logo.png?raw=true
 ---
 
-# Page On Construction {#index-ignore}
+{#index-ignore}
 
 <article></article><br/>
 
@@ -19,8 +19,7 @@ Exploration robots are able move in complex environtments using its censors to d
 # Real Time A*
 The real time A* is not only a neat way to see the execution of the A* module but also a good way to see if it is working the way I desired. As said before this interface uses the Pygame library and in order to make it work a start point and end point (obstacles are optional) need to be input. The box bellow shows the keys instructions:
 
-<iframe src="https://player.vimeo.com/video/140840976" width="500" height="522" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe> <p><a href="https://vimeo.com/140840976">A* Demo</a> from <a href="https://vimeo.com/numsr">MSR at Northwestern</a> on <a href="https://vimeo.com">Vimeo</a>.</p>
-
+<iframe src="https://player.vimeo.com/video/141565569" width="500" height="519" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe> <p><a href="https://vimeo.com/141565569">A* Demo</a> from <a href="https://vimeo.com/numsr">MSR at Northwestern</a> on <a href="https://vimeo.com">Vimeo</a>.</p>
 
 ![Live_aStar_Legend](https://github.com/guiklink/portfolio/blob/gh-pages/public/images/A_star/Live_aStar_Legend.png?raw=true)
 
