@@ -20,7 +20,7 @@ Now, what if we could bring that to the real world? Let's change the fairy wings
  
 Achieving this idea is a long run and for that purpose I will try to follow a roadmap of small projects (that will probably go on even after my masters program) covering each specific area of knowledge that in my opinion will help me in building a final product.    
 
-## My Quadrotors
+## My Flying Robots
 These are the quadrotors that I am most familiar with (both have good documentation and active community online) and therefore will be used on my work.  
 
 ### [Crazy Flie](http://www.bitcraze.se/crazyflie/) {#index-ignore}
@@ -31,7 +31,7 @@ Weighing less than 20g and totally open source this nano quadrotor is a great st
 ![AR_parrot](https://github.com/guiklink/portfolio/blob/gh-pages/public/images/flying_robots/ar_parrot.JPG?raw=true)  
 Due to its popularity, well documented SDK and lots of [ROS](http://www.ros.org/) packages available, I would say the that AR Parrot series is a good choice for those who wants to have a HD camera on board transmitting through wifi without having to build their own quadrotor. In addition, the downwards camera provides an amazing stability algorithm in ambients with good illumination, what is perfect for indoor applications.
 
-### [Cheap N' Tough Copter](http://guiklink.github.io/portfolio/projects/8-The_Cheap_n_Tought_Copter/)
+### [Cheap N' Tough Copter](http://guiklink.github.io/portfolio/projects/8-The_Cheap_n_Tought_Copter/) {#index-ignore}
 ![Cheap_N_Tough](https://github.com/guiklink/portfolio/blob/gh-pages/public/images/flying_robots/cheap_hellicopter.jpg?raw=true)
 Currently I am working on creating the Cheap N' Tough, a hacked toy hellicopter with a better IMU, radio comunication and my own controllers. 
 
