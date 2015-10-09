@@ -31,6 +31,9 @@ Weighing less than 20g and totally open source this nano quadrotor is a great st
 ![AR_parrot](https://github.com/guiklink/portfolio/blob/gh-pages/public/images/flying_robots/ar_parrot.JPG?raw=true)  
 Due to its popularity, well documented SDK and lots of [ROS](http://www.ros.org/) packages available, I would say the that AR Parrot series is a good choice for those who wants to have a HD camera on board transmitting through wifi without having to build their own quadrotor. In addition, the downwards camera provides an amazing stability algorithm in ambients with good illumination, what is perfect for indoor applications.
 
+### [Cheap N' Tough Copter](http://guiklink.github.io/portfolio/projects/8-The_Cheap_n_Tought_Copter/)
+![Cheap_N_Tough](https://github.com/guiklink/portfolio/blob/gh-pages/public/images/flying_robots/cheap_hellicopter.jpg?raw=true)
+Currently I am working on creating the Cheap N' Tough, a hacked toy hellicopter with a better IMU, radio comunication and my own controllers. 
 
 # (Part 1) Dynamics and Simulation
 When customizing quadrotors, by adding gadgets, increasing motors, changing its body shape or implementing functionalities, it is important to have a reliable simulation environment in order to try to predict the flaws (no one wants to break the dear drone). On this first project my goal was to understand the physics of quadrotors and how that is applied in the ROS simulator "Hector Quadrotor", so it can be altered and used to simulate different kinds of flying robots. 
