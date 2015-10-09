@@ -25,14 +25,17 @@ These are the quadrotors that I am most familiar with (both have good documentat
 
 ### [Crazy Flie](http://www.bitcraze.se/crazyflie/) {#index-ignore}
 ![Crazy_Flie](https://github.com/guiklink/portfolio/blob/gh-pages/public/images/flying_robots/crazy_flie.JPG?raw=true)  
+<br/>
 Weighing less than 20g and totally open source this nano quadrotor is a great startup for any quadrotor aficionado. Its parts are very cheap and it is so light that is harmless if collides to something.  
 
 ### [AR Parrot 2.0](http://ardrone2.parrot.com/) {#index-ignore}
 ![AR_parrot](https://github.com/guiklink/portfolio/blob/gh-pages/public/images/flying_robots/ar_parrot.JPG?raw=true)  
+<br/>
 Due to its popularity, well documented SDK and lots of [ROS](http://www.ros.org/) packages available, I would say the that AR Parrot series is a good choice for those who wants to have a HD camera on board transmitting through wifi without having to build their own quadrotor. In addition, the downwards camera provides an amazing stability algorithm in ambients with good illumination, what is perfect for indoor applications.
 
 ### [Cheap N' Tough Copter](http://guiklink.github.io/portfolio/projects/8-The_Cheap_n_Tought_Copter/) {#index-ignore}
-![Cheap_N_Tough](https://github.com/guiklink/portfolio/blob/gh-pages/public/images/flying_robots/cheap_hellicopter.jpg?raw=true)
+![Cheap_N_Tough](https://github.com/guiklink/portfolio/blob/gh-pages/public/images/flying_robots/cheap_hellicopter.jpg?raw=true)  
+<br/>
 Currently I am working on creating the Cheap N' Tough, a hacked toy hellicopter with a better IMU, radio comunication and my own controllers. 
 
 # (Part 1) Dynamics and Simulation
