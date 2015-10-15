@@ -1,6 +1,6 @@
 ---
 layout: project
-title: Pathfinder with A*
+title: The Cheap N' Though Copter
 repository: 
 date: September 1, 2015
 image: https://github.com/guiklink/portfolio/blob/gh-pages/public/images/cheap_N_tought_copter/logo.jpg?raw=true
