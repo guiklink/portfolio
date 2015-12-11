@@ -22,8 +22,6 @@ My goal in this project is an improvement for toy helicopters by adding a better
 
 ### A Toy Hellicopter {#index-ignore}
 
-![toy_hellicopter]()
-
 For the scope of this project designing parts, 3D printing gears and picking motors can be a cumbersome and  unnecessary task, especially when you can buy a cheap [toy helicopters](http://www.amazon.com/gp/product/B00DPK11ZA/ref=s9_simh_gw_p21_d29_i4?pf_rd_m=ATVPDKIKX0DER&pf_rd_s=desktop-1&pf_rd_r=0JV5BKHGHKT6ZDM0V93Y&pf_rd_t=36701&pf_rd_p=2079475242&pf_rd_i=desktop) to start from.
 
 ### PIC32MX250F128B
@@ -32,19 +30,13 @@ For the scope of this project designing parts, 3D printing gears and picking mot
 
 A 32 bit microcontroller from microchip the [PIC32](https://en.wikipedia.org/wiki/PIC_microcontroller) is small, cheap, light and used in a variety of applications. It was my choice as the onboard processor of my Cheap N' Though.
 
-### IMU {#index-ignore}
+### IMU
+In order to achieve good controls and a stabilized flight a better IMU is required. For this function I chose the [LSM9DS1](https://www.sparkfun.com/products/13284) from Sparkfun. This device provides me data in 9 [DOF](https://en.wikipedia.org/wiki/Degrees_of_freedom_(mechanics)), 3-axis gyroscope, 3-axis accelerometer and 3-axis magnetometer and in addition comes with all the pull-up resistors necessary. In this [repository](https://github.com/guiklink/Sparkfun_LSM9DS1_PIC32) is the library that I developed to use this IMU with a PIC32.
 
-![IMU](https://github.com/guiklink/portfolio/blob/gh-pages/public/images/cheap_N_tought_copter/imu.JPG?raw=true)
+### Radio Comunicator
+A [radio breakout board](https://www.sparkfun.com/products/691) will be added so I can stablish a comunnication between the hellicopter and my computer. For this application I chose a radio that uses the nRF24L01 protocol, so I can communicate with the same antenna I have been using for my [Crazy Flies](https://www.bitcraze.io/crazyflie/). In this [repository](https://github.com/guiklink/sparkfun_nRF24L01.h) is the library that I developed to use this IMU with a PIC32.
 
-In order to achieve good controls and a stabilized flight a better IMU is required. For this function I chose the [LSM6DS3](https://www.sparkfun.com/products/13339) from Sparkfun. This device provides me data in 6 [DOF](https://en.wikipedia.org/wiki/Degrees_of_freedom_(mechanics)) and in addition, Sparkfun provides a good [code samples](https://github.com/sparkfun/SparkFun_LSM6DS3_Arduino_Library) of how to use it.
-
-### Radio Comunicator {#index-ignore}
-
-![radio_nRF24L01](https://github.com/guiklink/portfolio/blob/gh-pages/public/images/cheap_N_tought_copter/radio.JPG?raw=true)
-
-A [radio breakout board](https://www.sparkfun.com/products/691) will be added so I can stablish a comunnication between the hellicopter and my computer. For this application I chose a radio that uses the nRF24L01 protocol, so I can communicate with the same antenna I have been using for my [Crazy Flies](https://www.bitcraze.io/crazyflie/).
-
-### The NU32 {#index-ignore}
+### The NU32
 
 ![NU32 / Nscope](https://github.com/guiklink/portfolio/blob/gh-pages/public/images/cheap_N_tought_copter/NU32_Nscope.JPG?raw=true)
 
@@ -56,6 +48,7 @@ The [NU32](http://hades.mech.northwestern.edu/index.php/NU32:_Introduction_to_th
 
 I protoboard mounted by myself with a standard PIC32MX250F128B and a LCD screen for a final test of the comunications before designing the final PCB.
 
+# In Progress {#index-ignore}
 
 
 
