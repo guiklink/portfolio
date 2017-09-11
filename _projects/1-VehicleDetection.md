@@ -2,13 +2,13 @@
 layout: project
 title: Vehicle Detector
 repository: https://github.com/guiklink/CarND-Vehicle-Detection
-date: September 10, 2017
+date:
 image: https://github.com/guiklink/portfolio/blob/gh-pages/public/images/VehicleDetection/logo.png?raw=true
 ---
 
 <article></article><br/>
 
-# Vehicle Detection Project
+# Vehicle Detection Project {#index-ignore}
 
 The goals / steps of this project are the following:
 
@@ -17,6 +17,8 @@ The goals / steps of this project are the following:
 * Implement a sliding-window technique and use your trained classifier to search for vehicles in images.
 * Run your pipeline on a video stream and create a heat map of recurring detections frame by frame to reject outliers and follow detected vehicles.
 * Estimate a bounding box for vehicles detected.
+
+<iframe src="https://vimeo.com/233159995" width="1137" height="639" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe> <p><a href="https://vimeo.com/233159995">Detecting Vehicles</a> from <a href="https://vimeo.com/user43396191">Guilherme Klink</a> on <a href="https://vimeo.com">Vimeo</a>.</p>
 
 [//]: # (Image References)
 [image1]: ./output_images/car_not_car.png
@@ -173,13 +175,13 @@ def find_cars(img, ystart, ystop, scale, svc, X_scaler, orient, pix_per_cell, ce
                 
     return window_list
 ```
-#### Parameters:
+#### Parameters: {#index-ignore}
 * img: frame to be segmented.
 * ystart, ystop: set a part of the image as an area of interest to search, after all cars won't be in the sky.
 * scale: the size of each window.
 * svc, X_scaler: this are the model trained and the scaler used to produce its features respectively.
 
-#### Training Parameters: 
+#### Training Parameters: {#index-ignore}
 
 * orient: define how many orientations for the gradient .
 * pix_per_cell:  number of pixels per HOG cell.
@@ -206,7 +208,7 @@ I recorded the positions of positive detections in each frame of the video.  Fro
 
 Here's an example result showing the heat map from a series of frames of video around the image with detection showed before. Using the heat map strategy, the result of `scipy.ndimage.measurements.label()` and the bounding boxes then overlaid on the last frame of video:
 
-### Here the resulting bounding boxes are drawn onto the last frame in a 10 frames series:
+### Here the resulting bounding boxes are drawn onto the last frame in a 10 frames series: {#index-ignore}
 ![alt text][image6]
 
 ---

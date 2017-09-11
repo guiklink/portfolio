@@ -2,7 +2,7 @@
 layout: project
 title: 2D Quadrotor Optimization
 repository:
-date: February 10, 2015
+date: 
 image: https://github.com/guiklink/portfolio/blob/gh-pages/public/images/2D_quad_opt/logo.png?raw=true
 ---
 
