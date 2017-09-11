@@ -1,102 +1,216 @@
 ---
 layout: project
 title: Vehicle Detector
-repository:
+repository: https://github.com/guiklink/CarND-Vehicle-Detection
 date: September 10, 2017
-image: https://github.com/guiklink/portfolio/blob/gh-pages/public/images/pj2_logo_small.JPG?raw=true
+image: https://github.com/guiklink/portfolio/blob/gh-pages/public/images/VehicleDetection/logo.png?raw=true
 ---
 
 <article></article><br/>
 
-# Introduction
-As a roboticist I tend to believe in a future where robots and humans will be so connected that robots will be as present in dailly life as the smartphone that is always conveniently around. In my opinion, such connection will be conceived by the adaptability of robots into doing different tasks in harmony with us facilitating our simple daily tasks. This page is about my work with my favorite type of robot, the flying drone and it will be updated as I keep implementing new functionalities to it. I will start with the very basic and try to build it up in something useful (that I will probably be trying to use in my apartment). At this point, I do not expect drones to be helping me to carry burdensome loads of weight, the energy and aerodynamics for that is not easily available, or grasping complicated objects, after all that could be years of someone's PhD thesis in robotic manipulation. Instead, what if I could use some Control, Artificial Intelligence and Computer Vision techniques to transform my UAV into something like this:
+# Vehicle Detection Project
 
-![navi_following](https://github.com/guiklink/portfolio/blob/gh-pages/public/images/flying_robots/navi_following.jpg?raw=true) ![navi_friend](https://github.com/guiklink/portfolio/blob/gh-pages/public/images/flying_robots/navi_friend.jpg?raw=true)  
-![navi_targeting](https://github.com/guiklink/portfolio/blob/gh-pages/public/images/flying_robots/navi_targeting.jpg?raw=true) ![navi_hint](https://github.com/guiklink/portfolio/blob/gh-pages/public/images/flying_robots/navi_hint.jpg?raw=true)
+The goals / steps of this project are the following:
 
-In the series "The Legend of Zelda: Ocarina of Time" for N64 (Nintendo - 1998), the fairy Navi assisted the protagonist Link on his quest to save a forsaken land by following him around, giving another view of perspective, recognizing friends and foes, conquering treacherous dungeons or even giving useful advices.
+* Perform a Histogram of Oriented Gradients (HOG) feature extraction on a labeled training set of images and train a classifier Linear SVM classifier
+* Apply a color transform and append binned color features, as well as histograms of color, to your HOG feature vector. 
+* Implement a sliding-window technique and use your trained classifier to search for vehicles in images.
+* Run your pipeline on a video stream and create a heat map of recurring detections frame by frame to reject outliers and follow detected vehicles.
+* Estimate a bounding box for vehicles detected.
 
-Now, what if we could bring that to the real world? Let's change the fairy wings for rotors and we have a quadrotor, that could follow us around, stay in our house or office and assist us with our daily quests (which diffently than Link I hope is not vanquishing goblins and shadow creatures) without really physicall. What if my fairy based drone could monitor my apartment, recognizing the people inside, film me spiking a volleyball from a nice angle, carry a letter to a co-worker whose desk is across the hall or even access the SIRI service from my iPhone and through a small on board speaker reminds me from my daily agenda (after seeing me goofing off on the couch). This kind of companion kind of robot  is my main motivation in working with UAV's. 
- 
-Achieving this idea is a long run and for that purpose I will try to follow a roadmap of small projects (that will probably go on even after my masters program) covering each specific area of knowledge that in my opinion will help me in building a final product.    
-
-## My Flying Robots
-These are the quadrotors that I am most familiar with (both have good documentation and active community online) and therefore will be used on my work.  
-
-### [Crazy Flie](http://www.bitcraze.se/crazyflie/) {#index-ignore}
-![Crazy_Flie](https://github.com/guiklink/portfolio/blob/gh-pages/public/images/flying_robots/crazy_flie.JPG?raw=true)  
-<br/>
-Weighing less than 20g and totally open source this nano quadrotor is a great startup for any quadrotor aficionado. Its parts are very cheap and it is so light that is harmless if collides to something.  
-
-### [AR Parrot 2.0](http://ardrone2.parrot.com/) {#index-ignore}
-![AR_parrot](https://github.com/guiklink/portfolio/blob/gh-pages/public/images/flying_robots/ar_parrot.JPG?raw=true)  
-<br/>
-Due to its popularity, well documented SDK and lots of [ROS](http://www.ros.org/) packages available, I would say the that AR Parrot series is a good choice for those who wants to have a HD camera on board transmitting through wifi without having to build their own quadrotor. In addition, the downwards camera provides an amazing stability algorithm in ambients with good illumination, what is perfect for indoor applications.
-
-### [Cheap N' Tough Copter](http://guiklink.github.io/portfolio/projects/8-The_Cheap_n_Tought_Copter/) {#index-ignore}
-![Cheap_N_Tough](https://github.com/guiklink/portfolio/blob/gh-pages/public/images/flying_robots/cheap_hellicopter.jpg?raw=true)  
-<br/>
-Currently I am working on creating the Cheap N' Tough, a hacked toy hellicopter with a better IMU, radio comunication and my own controllers. 
-
-# (Part 1) Dynamics and Simulation
-When customizing quadrotors, by adding gadgets, increasing motors, changing its body shape or implementing functionalities, it is important to have a reliable simulation environment in order to try to predict the flaws (no one wants to break the dear drone). On this first project my goal was to understand the physics of quadrotors and how that is applied in the ROS simulator "Hector Quadrotor", so it can be altered and used to simulate different kinds of flying robots. 
-The knowledge gathered from this project were key to implement my [2D Quadrotor Optimization](http://guiklink.github.io/portfolio/projects/2-2D_Quad/).
-
-## State of the Art {#index-ignore}
-Bellow the papers that I used on this task.
-
-* Comprehensive Simulation of Quadrotor UAVs Using ROS and Gazebo *by Johannes Meyer, Alexander Sendobry, Stefan Kohlbrecher, Uwe Klingauf and Oskar von Stryk 2*
-
-* Full Control of a Quadrotor *by Samir Bouabdallah and Roland Siegwart*
-
-* Quadcopter Dynamics, Simulation, and Control
-
-## Resources {#index-ignore}
-
-* [Hector Quadrotor](http://wiki.ros.org/hector_quadrotor)  
-
-* [Gazebo](http://gazebosim.org/)  
-
-## Main Ideas {#index-ignore}
-
-* Calculate a brushless motor thrust from its voltage
-
-* PIDs working on a low level getting data from an onboard IMU and for stabilization
-
-* Inertia of the drone taking part in its controllers
-
-![hector_crazyflie_sim](https://github.com/guiklink/portfolio/blob/gh-pages/public/images/flying_robots/hector_quad.png?raw=true)  
+[//]: # (Image References)
+[image1]: ./output_images/car_not_car.png
+[image2]: ./output_images/hog.png
+[image3]: ./output_images/sliding_windows.png
+[image4]: ./output_images/sliding_windows_HSV.png
+[image5]: ./output_images/sliding_windows_imp.png
+[image6]: ./output_images/heat_map.png
 
 
-# (Part 2) Stabilization and Reference Follower (Still working on ...)
+## Contents
+* [Project Video](https://vimeo.com/233159995)
+* [Train_Model](Train_Model.ipynb): notebook used for training a SVC.
+* [Video_Pipeline](Video_Pipeline.ipynb): notebook used to produce the output video.
+* [Trials](Trials.ipynb): notebook used to test different parameters for training.
+* [auxiliary.py](auxiliary.py): contains all the functions used in the project.
+* [model.p](model.p): a pickle file containing the trained model for HSV images and the parameters used.
+* [model_YCrCb.p](model_YCrCb.p): a pickle file containing the trained model for YCrCb and the parameters used.
 
-## Introduction {#index-ignore}
+### 1. Histogram of Oriented Gradients (HOG)
 
-On the previous section I mentioned that PID controllers at a low level take the role of stabilizing quadrotors. This is not entirelly true, although it can be efficient in stabilizing the rotational axes (using a [gyro](http://en.wikipedia.org/wiki/Gyroscope)) and its altitude (using a [barometer](http://www.seeedstudio.com/wiki/Grove_-_Barometer_Sensor)) they fail to stabilize any movement on the plane paralel to the floor, in other words, the quadrotor drifts like an air ballon. To solve this problem an external reference is required, for example, some outdoor drones uses a GPS or the AR parrot like I mentioned before uses a camera looking to the ground.  
+To train a [Support Vector Classification (SVC)]() I used a large set of `vehicle` and `non-vehicle` images. I have attached an example bellow of `vehicle (left)` and `non-vehicle (right)` classes:
 
-My starting objective is to stabilize my AR Parrot using an outside reference (I'm going to start with tags). The starting idea is to use controllers, to perform the following functions:
+![alt text][image1]
 
-## Altitude Control {#index-ignore}
-![schematic1](https://github.com/guiklink/portfolio/blob/gh-pages/public/images/flying_robots/schematic1.PNG?raw=true)  
+I then explored different color spaces and different `skimage.hog()` parameters (`orientations`, `pixels_per_cell`, and `cells_per_block`).  I grabbed random images from each of the two classes and displayed them to get a feel for what the `skimage.hog()` output looks like.
 
-A PID controller that keeps the drone altitude the same of the rerential (H meters in blue).
+The code bellow found in lines 41 through 58 of the file called [auxiliary.py](auxiliary.py), is responsible for extracting the [HOG](https://en.wikipedia.org/wiki/Histogram_of_oriented_gradients) features from the image.  
+```python
+def get_hog_features(img, orient, pix_per_cell, cell_per_block, 
+                        vis=False, feature_vec=True):
+    # Call with two outputs if vis==True
+    if vis == True:
+        features, hog_image = hog(img, orientations=orient, 
+                                  pixels_per_cell=(pix_per_cell, pix_per_cell),
+                                  cells_per_block=(cell_per_block, cell_per_block), 
+                                  transform_sqrt=True, 
+                                  visualise=vis, feature_vector=feature_vec)
+        return features, hog_image
+    # Otherwise call with one output
+    else:      
+        features = hog(img, orientations=orient, 
+                       pixels_per_cell=(pix_per_cell, pix_per_cell),
+                       cells_per_block=(cell_per_block, cell_per_block), 
+                       transform_sqrt=True, 
+                       visualise=vis, feature_vector=feature_vec)
+        return features
+```
+Here is an example using the `HSV` color space and HOG parameters of `orientations=8`, `pixels_per_cell=(8, 8)` and `cells_per_block=(2, 2)`:
+
+![alt text][image2]
 
 
-## Alignment Control {#index-ignore}
-![schematic2](https://github.com/guiklink/portfolio/blob/gh-pages/public/images/flying_robots/schematic2.PNG?raw=true) 
+### 2. Color Space and HOG Parameters
 
-A PID controller that keeps the drone allign with the rerential (Red arrows).
+I tried various combinations of parameters and...
 
-## Distance Control {#index-ignore}
-A PID controller that keeps the drone in a constant distance from the referential.
+### 3. Training the SVC
+
+I trained a linear SVM (or in this case SVC) in [Train_Model](Train_Model.ipynb) and saved it as a pickle in [model.p](model.p). 
+
+The pickle contains the model and all the parameters used for creating the training features. This parameters also need to be used to transform chunks of images being analyze in an input feature to be classified by the model. 
+
+```python
+{'acc': 0.99270000000000003,
+ 'cell_per_block': 2,
+ 'hist_bins': 16,
+ 'model': LinearSVC(C=1.0, class_weight=None, dual=True, fit_intercept=True,
+      intercept_scaling=1, loss='squared_hinge', max_iter=1000,
+      multi_class='ovr', penalty='l2', random_state=None, tol=0.0001,
+      verbose=0),
+ 'orient': 9,
+ 'pix_per_cell': 8,
+ 'rand_state': 75,
+ 'scaler': StandardScaler(copy=True, with_mean=True, with_std=True),
+ 'spatial_size': (16, 16)}
+```
+
+### 4. Sliding Window Search
+
+Now that I have a model that is able to classify boxes of images, the next step of my approach was to segment each frame of the video into windows and feed them into my classifier. The code for that can be found in [auxiliary.py](auxiliary.py) and seem bellow:
+
+```python
+def find_cars(img, ystart, ystop, scale, svc, X_scaler, orient, pix_per_cell, cell_per_block, spatial_size, hist_bins, plot=False):
+    
+    draw_img = np.copy(img)
+    # img = img.astype(np.float32)/255
+    
+    img_tosearch = img[ystart:ystop,:,:]
+    ctrans_tosearch = convert_color(img_tosearch, conv='HSV')
+    # ctrans_tosearch = convert_color(img_tosearch, conv='RGB2YCrCb')
+    if scale != 1:
+        imshape = ctrans_tosearch.shape
+        ctrans_tosearch = cv2.resize(ctrans_tosearch, (np.int(imshape[1]/scale), np.int(imshape[0]/scale)))
+        
+    ch1 = ctrans_tosearch[:,:,0]
+    ch2 = ctrans_tosearch[:,:,1]
+    ch3 = ctrans_tosearch[:,:,2]
+
+    # Define blocks and steps as above
+    nxblocks = (ch1.shape[1] // pix_per_cell) - cell_per_block + 1
+    nyblocks = (ch1.shape[0] // pix_per_cell) - cell_per_block + 1 
+    nfeat_per_block = orient*cell_per_block**2
+    
+    # 64 was the orginal sampling rate, with 8 cells and 8 pix per cell
+    window = 64
+    nblocks_per_window = (window // pix_per_cell) - cell_per_block + 1
+    cells_per_step = 2  # Instead of overlap, define how many cells to step
+    nxsteps = (nxblocks - nblocks_per_window) // cells_per_step
+    nysteps = (nyblocks - nblocks_per_window) // cells_per_step
+    
+    # Compute individual channel HOG features for the entire image
+    hog1 = get_hog_features(ch1, orient, pix_per_cell, cell_per_block, feature_vec=False)
+    hog2 = get_hog_features(ch2, orient, pix_per_cell, cell_per_block, feature_vec=False)
+    hog3 = get_hog_features(ch3, orient, pix_per_cell, cell_per_block, feature_vec=False)
+    
+    window_list = []
+
+    for xb in range(nxsteps):
+        for yb in range(nysteps):
+            ypos = yb*cells_per_step
+            xpos = xb*cells_per_step
+            # Extract HOG for this patch
+            hog_feat1 = hog1[ypos:ypos+nblocks_per_window, xpos:xpos+nblocks_per_window].ravel() 
+            hog_feat2 = hog2[ypos:ypos+nblocks_per_window, xpos:xpos+nblocks_per_window].ravel() 
+            hog_feat3 = hog3[ypos:ypos+nblocks_per_window, xpos:xpos+nblocks_per_window].ravel() 
+            hog_features = np.hstack((hog_feat1, hog_feat2, hog_feat3))
+
+            xleft = xpos*pix_per_cell
+            ytop = ypos*pix_per_cell
+
+            # Extract the image patch
+            subimg = cv2.resize(ctrans_tosearch[ytop:ytop+window, xleft:xleft+window], (64,64))
+          
+            # Get color features
+            spatial_features = bin_spatial(subimg, size=spatial_size)
+            hist_features = color_hist(subimg, nbins=hist_bins)
+
+            # Scale features and make a prediction
+            test_features = X_scaler.transform(np.hstack((spatial_features, hist_features, hog_features)).reshape(1, -1))    
+            #test_features = X_scaler.transform(np.hstack((shape_feat, hist_feat)).reshape(1, -1))    
+            test_prediction = svc.predict(test_features)
+            
+            if test_prediction == 1:
+                xbox_left = np.int(xleft*scale)
+                ytop_draw = np.int(ytop*scale)
+                win_draw = np.int(window*scale)
+                window_list.append(((xbox_left, ytop_draw+ystart),(xbox_left+win_draw,ytop_draw+win_draw+ystart)))
+                if plot:
+                    cv2.rectangle(draw_img,(xbox_left, ytop_draw+ystart),(xbox_left+win_draw,ytop_draw+win_draw+ystart),(0,0,255),6) 
+
+    if plot:
+        plt.imshow(draw_img)
+                
+    return window_list
+```
+#### Parameters:
+* img: frame to be segmented.
+* ystart, ystop: set a part of the image as an area of interest to search, after all cars won't be in the sky.
+* scale: the size of each window.
+* svc, X_scaler: this are the model trained and the scaler used to produce its features respectively.
+
+#### Training Parameters: 
+
+* orient: define how many orientations for the gradient .
+* pix_per_cell:  number of pixels per HOG cell.
+* cell_per_block:  number of cells per HOG block.
+* spatial_size, hist_bins: resize image and color histogram specs.
+* plot: ```True``` or ```False``` to plot the output image.
+
+**PS**: This parameters need to be set the same way they were for training the classifier.
 
 
-## Rotation Control {#index-ignore}
-![schematic3](https://github.com/guiklink/portfolio/blob/gh-pages/public/images/flying_robots/schematic3.PNG?raw=true)
+![alt text][image5]
 
-A controller able to yaw and move the drone so it is always facing the referential.
+#### HSV vs. YCrCb
 
+Through experimentation, I ultimately searched on two scales using YCrCb 3-channel HOG features plus spatially binned color and histograms of color in the feature vector, which provided a nice result.  Here you can see the two best performing color schemes ```HSV (Left)``` and ```YCrCb (right)``` :
 
-## Resources {#index-ignore}
+![alt text][image4] ![alt text][image3]
 
-* [AR Drone Tutorials](http://robohub.org/up-and-flying-with-the-ar-drone-and-ros-getting-started/)
+---
+
+### Video Implementation
+
+I recorded the positions of positive detections in each frame of the video.  From the positive detections I created a heatmap and then thresholded that map to identify vehicle positions.  I then used `scipy.ndimage.measurements.label()` to identify individual blobs in the heatmap.  I then assumed each blob corresponded to a vehicle.  I constructed bounding boxes to cover the area of each blob detected.  
+
+Here's an example result showing the heat map from a series of frames of video around the image with detection showed before. Using the heat map strategy, the result of `scipy.ndimage.measurements.label()` and the bounding boxes then overlaid on the last frame of video:
+
+### Here the resulting bounding boxes are drawn onto the last frame in a 10 frames series:
+![alt text][image6]
+
+---
+
+### Improvements
+A clear aspect of my pipeline that could be improved is the fact that it sometimes detect cars coming in the opposite side of the road. One way to solve this could ignore the left side of the image, however that could create a blind spot if the car is all the way on the left of the lane. Another solution could be to reduce the scale of my windows when looking for a detection, that the drawback would be that the pipeline would not be able to detect cars far away on the correct road.
+
