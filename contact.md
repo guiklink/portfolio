@@ -5,8 +5,6 @@ url: index.html
 image: https://github.com/guiklink/portfolio/blob/gh-pages/public/images/nu-tech-building.jpg?raw=true
 ---
 
-## Email
-guilhermeklink2016@u.northwestern.edu
 
 ## Address
 Master of Science in Robotics  
