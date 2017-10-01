@@ -3,7 +3,7 @@ layout: project
 title: Deep Learning - Behavioral Cloning
 repository: 
 date: September 01, 2017
-image: https://github.com/guiklink/portfolio/blob/gh-pages/public/images/VehicleDetection/logo.png?raw=true
+image: https://github.com/guiklink/portfolio/blob/gh-pages/public/images/behav_cloning/logo.png?raw=true
 ---
 
 The goals / steps of this project are the following:
