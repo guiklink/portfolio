@@ -2,7 +2,7 @@
 layout: project
 title: Vehicle Detection
 repository: 
-date: September 01, 2017
+date: September 02, 2010
 image: https://github.com/guiklink/portfolio/blob/gh-pages/public/images/VehicleDetection/logo.png?raw=true
 ---
 

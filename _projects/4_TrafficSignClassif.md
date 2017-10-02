@@ -2,7 +2,7 @@
 layout: project
 title: TensorFlow - Traffic Classifier
 repository: 
-date: September 01, 2017
+date: September 04, 2010
 image: https://github.com/guiklink/portfolio/blob/gh-pages/public/images/traffic_sign_classif/logo.png?raw=true
 ---
 

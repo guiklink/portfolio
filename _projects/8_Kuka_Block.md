@@ -1,7 +1,7 @@
 ---
 layout: project
 title: Kuka youBot
-date: September 22, 2014
+date: September 08, 2010
 image: https://github.com/guiklink/portfolio/blob/gh-pages/public/images/youBot.jpg?raw=true
 ---
 

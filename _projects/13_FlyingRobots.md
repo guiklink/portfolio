@@ -2,7 +2,7 @@
 layout: project
 title: Flying Robots
 repository:
-date: February 10, 2015
+date: September 13, 2010
 image: https://github.com/guiklink/portfolio/blob/gh-pages/public/images/pj2_logo_small.JPG?raw=true
 ---
 

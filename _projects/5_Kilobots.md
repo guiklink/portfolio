@@ -2,7 +2,7 @@
 layout: project
 title: Kilobots
 repository:
-date: February 10, 2015
+date: September 05, 2010
 image: https://github.com/guiklink/portfolio/blob/gh-pages/public/images/kilobots/logo.jpeg?raw=true
 ---
 

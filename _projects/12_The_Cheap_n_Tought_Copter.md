@@ -2,7 +2,7 @@
 layout: project
 title: The Cheap N' Though Copter
 repository: 
-date: September 1, 2015
+date: September 12, 2010
 image: https://github.com/guiklink/portfolio/blob/gh-pages/public/images/cheap_N_tought_copter/logo.jpg?raw=true
 ---
 

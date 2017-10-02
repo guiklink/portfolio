@@ -2,7 +2,7 @@
 layout: project
 title: Twig Walking Animation
 repository: https://github.com/guiklink/Unity3d_Twig
-date: August 31, 2015
+date: September 10, 2010
 image: https://github.com/guiklink/portfolio/blob/gh-pages/public/images/twig/Twig_logo.png?raw=true
 ---
 

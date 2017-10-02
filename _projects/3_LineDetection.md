@@ -2,7 +2,7 @@
 layout: project
 title: Line Detection
 repository: 
-date: September 01, 2017
+date: September 03, 2010
 image: https://github.com/guiklink/portfolio/blob/gh-pages/public/images/line_detector/logo.png?raw=true
 ---
 
