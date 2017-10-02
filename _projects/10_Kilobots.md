@@ -3,7 +3,7 @@ layout: project
 title: Kilobots
 repository:
 date: February 10, 2015
-image: https://github.com/guiklink/portfolio/blob/gh-pages/public/images/2D_quad_opt/logo.png?raw=true
+image: https://github.com/guiklink/portfolio/blob/gh-pages/public/images/kilobots/logo.jpeg?raw=true
 ---
 
 [Mathematica Code](/home/klink/MS_Robotics/ME454_Optimal_Control/Final Project/GK_Quad_Animated-1.nb) *this file has .nb extendion and can probably only be read properlly with Wolfran Mathematica*
@@ -20,16 +20,16 @@ The kilobots are simplistic nano robots created by professor [Mike Rubenstein](h
 
 * [ppt presentation](https://github.com/guiklink/portfolio/blob/gh-pages/public/Documents/kilobots/Kilobot%20Trilateration.pptx)
 
-#### 1 - No Encoders or External Feedback
+#### 1 - No Encoders or External Feedback {#index-ignore}
 Being very small robots do not allow the kilobots to have encoders or many sensors. Making knowing their position in the world or how much they move a challenge.
 
-#### 2 - Calibration
+#### 2 - Calibration {#index-ignore}
 As the name suggest the kilobot are usually in the number of thousands. Obviously between each individual there small physical differences on its legs and actuators. The same amount of actuator activation will generate different angles in different kilobots.
 
 ## Swarm Solution
 To overcome these difficulties the robots will alternate their role between **frame robot** and **moving robot**. When on frame role the robot is responsible to synchronize with another two robots with the same role and create a local coordinate frame (see bellow). Then, on moving role the robot receive compute the distance from each other frame robot from a local frame and uses [trilateration](https://en.wikipedia.org/wiki/Trilateration) to calculate its position (x, y). For a 2D trilateration a point needs to know its distance to three other difference points of known coordinates, hence it will be required 3 robots to compose a local frame.
 
-### 1. Creating a local frame
+### Creating a local frame
 Kilobots are able to send messages containing an array of integers and estimate the distance **d** that the message traveled with a high precision. Using this messages a local frame can be created when three robots synchronize as the same frame and assume the function of:
 
 *  **Frame origin:** position x=0, y=0
@@ -42,7 +42,7 @@ Bellow you can see the math used to calculate the position **x3** and **y3**.
 
 ![2D_quadrotor](https://github.com/guiklink/portfolio/blob/gh-pages/public/images/kilobots/local_frame2.png?raw=true)
 
-### 2. Trilaterate position
+### Trilaterate position
 
 ![2D_quadrotor](https://github.com/guiklink/portfolio/blob/gh-pages/public/images/kilobots/trilat1.png?raw=true)
 
