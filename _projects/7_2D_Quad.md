@@ -8,7 +8,7 @@ image: https://github.com/guiklink/portfolio/blob/gh-pages/public/images/2D_quad
 
 [Mathematica Code](/home/klink/MS_Robotics/ME454_Optimal_Control/Final Project/GK_Quad_Animated-1.nb) *this file has .nb extendion and can probably only be read properlly with Wolfran Mathematica*
 
-[Write Up](https://github.com/guiklink/portfolio/blob/gh-pages/public/Documents/2D_Quad/write_up.pdf)
+The derivation of the control equations can be found [here](https://github.com/guiklink/portfolio/blob/gh-pages/public/Documents/2D_Quad/write_up.pdf).
 
 <article></article><br/>
 
